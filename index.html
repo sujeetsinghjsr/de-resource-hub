@@ -1,60 +1,862 @@
-⌘
-Data Engineering Hub
-Topics
-Learning paths
-Resource library
-About
-GitHub ↗
-LEARN · BUILD · PREPARE
-Build your Data Engineering skills, one resource at a time.
-A curated library of trusted documentation, practical tutorials, hands-on project ideas and interview preparation for modern data platforms.
-Explore the library ↓Choose a learning path →
-0
-Curated resources
-0
-Learning topics
-Free
-Public learning links
-Featured starting points
-Three useful places to begin or deepen your learning.
-01 · CORE FOUNDATIONS
-Get confident with SQL
-Build query-writing skills before moving into complex transformations and analytics.
-Start SQL practice ↗
-02 · DISTRIBUTED PROCESSING
-Understand Apache Spark
-Learn DataFrames, execution, joins, partitioning and performance troubleshooting.
-Explore Spark guide ↗
-03 · LAKEHOUSE PLATFORM
-Explore Databricks
-Connect Spark, Delta Lake, data pipelines and governance concepts in one platform.
-Open documentation ↗
-Explore by technology
-Choose a topic to filter the library instantly.
-Suggested learning paths
-Follow a sequence rather than jumping randomly between topics.
-PATH 01
-Data Engineering foundations
-Start with SQL and Python, then learn orchestration and data pipeline design.
-Show foundation resources →
-PATH 02
-Spark and lakehouse
-Learn PySpark, Spark performance, Delta Lake and Databricks workflows.
-Show Spark resources →
-PATH 03
-Cloud and production
-Explore Azure data services, orchestration, streaming, quality and governance.
-Show cloud resources →
-Resource library
-Search and filter documentation, tutorials, practice exercises and project ideas.
-⌕
-All topics
-All levelsBeginnerIntermediateAdvanced
-All typesDocumentationTutorialPracticeProjectInterviewCourse
-Loading resources...
-Reset all filters ↺
-A practical library for continuous learning
-This hub brings together publicly available learning materials from their respective publishers. Use it to build foundations, explore production data engineering concepts, practise for interviews and plan hands-on projects. External links open the publisher's website.
-View this project on GitHub ↗
-Data Engineering Resource Hub · Learn continuously. Build practically.
-Created by Sujeet Singh · Hosted with GitHub Pages
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A curated Data Engineering Resource Hub with tutorials, documentation, projects and interview preparation.">
+<title>Data Engineering Resource Hub | Sujeet Singh</title>
+
+<style>
+:root {
+  --navy:#0b1630;
+  --blue:#4361ee;
+  --cyan:#8de7f2;
+  --bg:#f4f7fb;
+  --white:#ffffff;
+  --text:#15243b;
+  --muted:#64748b;
+  --border:#e1e8f2;
+  --tag:#edf2ff;
+  --shadow:0 10px 28px rgba(22,39,75,.07);
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+  line-height:1.6;
+}
+a { color:inherit; }
+button,input,select { font:inherit; }
+
+.topbar {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:16px;
+  padding:14px 5%;
+  background:white;
+  border-bottom:1px solid var(--border);
+  position:sticky;
+  top:0;
+  z-index:10;
+}
+.brand {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  text-decoration:none;
+  font-weight:800;
+}
+.brand-icon {
+  display:grid;
+  place-items:center;
+  width:38px;
+  height:38px;
+  border-radius:11px;
+  background:linear-gradient(135deg,#526dff,#23b6c8);
+  color:white;
+  font-size:21px;
+}
+nav { display:flex; gap:18px; flex-wrap:wrap; }
+nav a {
+  color:var(--muted);
+  text-decoration:none;
+  font-size:13px;
+  font-weight:700;
+}
+nav a:hover { color:var(--blue); }
+
+.hero {
+  background:
+    radial-gradient(ellipse at 85% 10%,rgba(48,102,190,.55),transparent 36%),
+    radial-gradient(ellipse at 10% 100%,rgba(23,153,174,.18),transparent 35%),
+    var(--navy);
+  color:white;
+  padding:65px 5% 50px;
+}
+.hero-inner { max-width:1160px; margin:auto; }
+.eyebrow {
+  color:var(--cyan);
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-size:12px;
+  font-weight:800;
+}
+h1 {
+  font-size:clamp(36px,5.5vw,62px);
+  line-height:1.08;
+  letter-spacing:-1.8px;
+  max-width:850px;
+  margin:16px 0;
+}
+.hero p { color:#d0daed; max-width:700px; font-size:17px; }
+.actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:24px; }
+.btn {
+  display:inline-block;
+  padding:11px 17px;
+  border-radius:9px;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:800;
+}
+.primary { background:var(--cyan); color:#092038; }
+.outline { border:1px solid #63718d; color:white; }
+.stats {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,180px));
+  gap:12px;
+  margin-top:32px;
+}
+.stat {
+  padding:12px 15px;
+  border:1px solid #34415c;
+  border-radius:12px;
+  background:rgba(255,255,255,.05);
+}
+.stat strong { display:block; font-size:22px; }
+.stat span { color:#c5d0e4; font-size:11px; }
+
+main { max-width:1200px; margin:auto; padding:34px 5% 60px; }
+.section { margin-bottom:42px; }
+.heading { margin-bottom:17px; }
+h2 { font-size:25px; letter-spacing:-.5px; margin:0 0 4px; }
+.sub { color:var(--muted); font-size:13px; margin:0; }
+
+.feature-grid,.paths {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:15px;
+}
+.feature {
+  padding:21px;
+  border-radius:15px;
+  color:white;
+  min-height:190px;
+  display:flex;
+  flex-direction:column;
+}
+.feature:nth-child(1) { background:linear-gradient(135deg,#243f9d,#4361ee); }
+.feature:nth-child(2) { background:linear-gradient(135deg,#075c6d,#139aa7); }
+.feature:nth-child(3) { background:linear-gradient(135deg,#352c75,#7955c8); }
+.feature .mini { font-size:11px; letter-spacing:1px; font-weight:800; }
+.feature h3 { font-size:20px; line-height:1.3; margin:12px 0 7px; }
+.feature p { color:#e1e9ff; font-size:13px; margin:0 0 15px; }
+.feature a { margin-top:auto; text-decoration:none; font-weight:800; font-size:13px; }
+
+.topic-grid {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px;
+}
+.topic {
+  cursor:pointer;
+  text-align:left;
+  border:1px solid var(--border);
+  background:white;
+  border-radius:13px;
+  padding:15px;
+  color:var(--text);
+  transition:.15s;
+}
+.topic:hover,.topic.active {
+  border-color:var(--blue);
+  box-shadow:var(--shadow);
+  transform:translateY(-2px);
+}
+.topic.active { background:var(--tag); }
+.topic .ico { display:block; font-size:22px; margin-bottom:5px; }
+.topic strong { display:block; font-size:13px; }
+.topic small { display:block; color:var(--muted); font-size:11px; margin-top:3px; }
+
+.path {
+  background:white;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:18px;
+}
+.path .number { color:var(--blue); font-size:11px; font-weight:800; letter-spacing:1px; }
+.path h3 { font-size:16px; margin:7px 0; }
+.path p { font-size:12px; color:var(--muted); }
+.path button {
+  background:var(--tag);
+  color:#2446c8;
+  border:0;
+  border-radius:8px;
+  padding:9px 11px;
+  cursor:pointer;
+  font-weight:800;
+  font-size:12px;
+}
+
+.toolbar { display:flex; gap:10px; flex-wrap:wrap; margin:18px 0 12px; }
+.search { position:relative; flex:1; min-width:230px; }
+.search span { position:absolute; left:13px; top:7px; font-size:20px; color:var(--muted); }
+input,select {
+  width:100%;
+  border:1px solid #d5deeb;
+  background:white;
+  border-radius:9px;
+  padding:11px 12px;
+  font-size:13px;
+  color:var(--text);
+}
+input { padding-left:40px; }
+input:focus,select:focus { outline:2px solid #bdccff; }
+.filter { width:160px; }
+.results {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  color:var(--muted);
+  font-size:12px;
+  margin:14px 0;
+}
+.reset { border:0; background:none; color:var(--blue); cursor:pointer; font-weight:800; }
+
+.resource-grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;
+}
+.resource {
+  display:flex;
+  flex-direction:column;
+  background:white;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:18px;
+  min-height:220px;
+  transition:.15s;
+}
+.resource:hover { transform:translateY(-2px); box-shadow:var(--shadow); }
+.resource-top { display:flex; justify-content:space-between; align-items:center; gap:8px; }
+.tag {
+  background:var(--tag);
+  color:#2e4bb3;
+  border-radius:6px;
+  padding:4px 7px;
+  font-size:10px;
+  font-weight:800;
+}
+.level { color:var(--muted); font-size:10px; }
+.resource h3 { font-size:16px; line-height:1.35; margin:14px 0 7px; }
+.resource p { color:var(--muted); font-size:12px; margin:0 0 12px; }
+.meta { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:12px; }
+.meta span { background:#f4f6fa; color:#52627a; padding:3px 6px; border-radius:5px; font-size:10px; }
+.resource-footer {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:8px;
+  margin-top:auto;
+  padding-top:12px;
+  border-top:1px solid #edf0f5;
+}
+.resource-footer a { color:var(--blue); text-decoration:none; font-size:12px; font-weight:800; }
+.resource-footer a:hover { text-decoration:underline; }
+.empty {
+  display:none;
+  text-align:center;
+  padding:30px;
+  background:white;
+  border:1px dashed #cbd5e1;
+  border-radius:13px;
+  color:var(--muted);
+}
+
+.about {
+  padding:24px;
+  border:1px solid #d7e4f7;
+  border-radius:15px;
+  background:linear-gradient(120deg,#eaf0ff,#e9fbfc);
+}
+.about p { color:#52627a; font-size:13px; max-width:800px; }
+.about a { color:#2446c8; font-weight:800; text-decoration:none; }
+footer { background:var(--navy); color:#cbd6e9; text-align:center; padding:23px 5%; font-size:12px; }
+footer a { color:var(--cyan); text-decoration:none; }
+
+@media(max-width:900px) {
+  .topic-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .resource-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .feature-grid,.paths { grid-template-columns:1fr; }
+}
+@media(max-width:560px) {
+  .topbar { align-items:flex-start; flex-direction:column; }
+  .resource-grid { grid-template-columns:1fr; }
+  .heading { align-items:flex-start; }
+  .filter { width:100%; }
+  .stats { grid-template-columns:1fr; max-width:260px; }
+  h1 { letter-spacing:-1px; }
+}
+</style>
+</head>
+
+<body>
+<header class="topbar">
+  <a class="brand" href="#">
+    <span class="brand-icon">⌘</span>
+    <span>Data Engineering Hub</span>
+  </a>
+  <nav aria-label="Main navigation">
+    <a href="#topics">Topics</a>
+    <a href="#paths">Learning Paths</a>
+    <a href="#resources">Resource Library</a>
+    <a href="#about">About</a>
+    <a href="https://github.com/sujeetsinghjsr" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="eyebrow">Learn · Build · Prepare</div>
+    <h1>Build your Data Engineering skills, one resource at a time.</h1>
+    <p>A curated library of trusted documentation, practical tutorials, hands-on project ideas and interview preparation for modern data platforms.</p>
+    <div class="actions">
+      <a class="btn primary" href="#resources">Explore the Library ↓</a>
+      <a class="btn outline" href="#paths">Choose a Learning Path →</a>
+    </div>
+    <div class="stats">
+      <div class="stat"><strong id="resourceStat">38</strong><span>Curated resources</span></div>
+      <div class="stat"><strong id="categoryStat">8</strong><span>Learning topics</span></div>
+      <div class="stat"><strong>Free</strong><span>Public learning links</span></div>
+    </div>
+  </div>
+</section>
+
+<main>
+<section class="section" id="featured">
+  <div class="heading">
+    <h2>Featured Starting Points</h2>
+    <p class="sub">Three useful places to begin or deepen your learning.</p>
+  </div>
+  <div class="feature-grid">
+    <article class="feature">
+      <div class="mini">01 · CORE FOUNDATIONS</div>
+      <h3>Get confident with SQL</h3>
+      <p>Build query-writing skills before moving into complex transformations and analytics.</p>
+      <a href="https://sqlbolt.com/" target="_blank" rel="noopener noreferrer">Start SQL practice ↗</a>
+    </article>
+    <article class="feature">
+      <div class="mini">02 · DISTRIBUTED PROCESSING</div>
+      <h3>Understand Apache Spark</h3>
+      <p>Learn DataFrames, execution, joins, partitioning and performance troubleshooting.</p>
+      <a href="https://spark.apache.org/docs/latest/sql-programming-guide.html" target="_blank" rel="noopener noreferrer">Explore Spark guide ↗</a>
+    </article>
+    <article class="feature">
+      <div class="mini">03 · LAKEHOUSE PLATFORM</div>
+      <h3>Explore Databricks</h3>
+      <p>Connect Spark, Delta Lake, data pipelines and governance concepts in one platform.</p>
+      <a href="https://docs.databricks.com/" target="_blank" rel="noopener noreferrer">Open documentation ↗</a>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="topics">
+  <div class="heading">
+    <h2>Explore by Technology</h2>
+    <p class="sub">Choose a topic to filter the resource library instantly.</p>
+  </div>
+  <div class="topic-grid" id="categoryGrid"></div>
+</section>
+
+<section class="section" id="paths">
+  <div class="heading">
+    <h2>Suggested Learning Paths</h2>
+    <p class="sub">Follow a sequence rather than jumping randomly between topics.</p>
+  </div>
+  <div class="paths">
+    <article class="path">
+      <div class="number">PATH 01</div>
+      <h3>Data Engineering Foundations</h3>
+      <p>Start with SQL and Python, then learn orchestration and data pipeline design.</p>
+      <button type="button" data-path="Foundations">Show foundation resources →</button>
+    </article>
+    <article class="path">
+      <div class="number">PATH 02</div>
+      <h3>Spark and Lakehouse</h3>
+      <p>Learn PySpark, Spark performance, Delta Lake and Databricks workflows.</p>
+      <button type="button" data-path="Spark & Lakehouse">Show Spark resources →</button>
+    </article>
+    <article class="path">
+      <div class="number">PATH 03</div>
+      <h3>Cloud and Production</h3>
+      <p>Explore Azure data services, orchestration, streaming, quality and governance.</p>
+      <button type="button" data-path="Cloud & Production">Show cloud resources →</button>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="resources">
+  <div class="heading">
+    <h2>Resource Library</h2>
+    <p class="sub">Search and filter documentation, tutorials, practice exercises and project ideas.</p>
+  </div>
+
+  <div class="toolbar">
+    <div class="search">
+      <span aria-hidden="true">⌕</span>
+      <input id="searchInput" type="search" placeholder="Search SQL, Spark, Kafka, interview..." aria-label="Search resources">
+    </div>
+    <select id="categoryFilter" class="filter" aria-label="Filter by topic">
+      <option value="All">All topics</option>
+    </select>
+    <select id="levelFilter" class="filter" aria-label="Filter by difficulty">
+      <option value="All">All levels</option>
+      <option value="Beginner">Beginner</option>
+      <option value="Intermediate">Intermediate</option>
+      <option value="Advanced">Advanced</option>
+    </select>
+    <select id="typeFilter" class="filter" aria-label="Filter by resource type">
+      <option value="All">All types</option>
+      <option value="Documentation">Documentation</option>
+      <option value="Tutorial">Tutorial</option>
+      <option value="Practice">Practice</option>
+      <option value="Project">Project</option>
+      <option value="Interview">Interview</option>
+      <option value="Course">Course</option>
+    </select>
+  </div>
+
+  <div class="results">
+    <span id="resultCount" aria-live="polite">Loading resources...</span>
+    <button class="reset" id="resetButton" type="button">Reset all filters ↺</button>
+  </div>
+
+  <div class="resource-grid" id="resourceGrid"></div>
+  <div class="empty" id="emptyState">
+    <h3>No matching resources</h3>
+    <p>Try another search term or reset your filters.</p>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <h2>A Practical Library for Continuous Learning</h2>
+  <p>This hub brings together publicly available learning materials from their respective publishers. Use it to build foundations, explore production data engineering concepts, practise for interviews and plan hands-on projects. External links open the publisher's website.</p>
+  <a href="https://github.com/sujeetsinghjsr/de-resource-hub" target="_blank" rel="noopener noreferrer">View this project on GitHub ↗</a>
+</section>
+</main>
+
+<footer>
+  <p>Data Engineering Resource Hub · Learn continuously. Build practically.</p>
+  <p>Created by <a href="https://github.com/sujeetsinghjsr">Sujeet Singh</a> · Hosted with GitHub Pages</p>
+</footer>
+
+<script>
+"use strict";
+
+const categories = [
+  {name:"SQL",icon:"▤",desc:"Queries, joins and tuning"},
+  {name:"Python",icon:"🐍",desc:"Programming and data tools"},
+  {name:"PySpark",icon:"⚡",desc:"Distributed processing"},
+  {name:"Databricks",icon:"◈",desc:"Lakehouse and Delta Lake"},
+  {name:"Azure",icon:"☁",desc:"Cloud data engineering"},
+  {name:"Kafka",icon:"⇄",desc:"Events and streaming"},
+  {name:"Data Engineering",icon:"◫",desc:"Pipelines and architecture"},
+  {name:"Interview Prep",icon:"◎",desc:"Practice and preparation"}
+];
+
+const resources = [
+  {
+    title:"SQLBolt Interactive Lessons",category:"SQL",type:"Practice",level:"Beginner",path:"Foundations",
+    desc:"Learn SQL through short lessons and interactive exercises.",
+    url:"https://sqlbolt.com/"
+  },
+  {
+    title:"W3Schools SQL Tutorial",category:"SQL",type:"Tutorial",level:"Beginner",path:"Foundations",
+    desc:"Practise SELECT, filtering, sorting, joins, grouping and more.",
+    url:"https://www.w3schools.com/sql/"
+  },
+  {
+    title:"PostgreSQL Documentation",category:"SQL",type:"Documentation",level:"Intermediate",path:"Foundations",
+    desc:"Reference for SQL syntax, functions, indexes and database concepts.",
+    url:"https://www.postgresql.org/docs/"
+  },
+  {
+    title:"LeetCode SQL 50",category:"SQL",type:"Practice",level:"Intermediate",path:"Foundations",
+    desc:"A structured set of SQL questions for interview practice.",
+    url:"https://leetcode.com/studyplan/top-sql-50/"
+  },
+  {
+    title:"Mode SQL Tutorial",category:"SQL",type:"Tutorial",level:"Intermediate",path:"Foundations",
+    desc:"Learn analytical SQL with examples and business-oriented exercises.",
+    url:"https://mode.com/sql-tutorial/"
+  },
+  {
+    title:"Python Official Tutorial",category:"Python",type:"Documentation",level:"Beginner",path:"Foundations",
+    desc:"Learn syntax, collections, functions, modules and exceptions.",
+    url:"https://docs.python.org/3/tutorial/"
+  },
+  {
+    title:"Python for Everybody",category:"Python",type:"Course",level:"Beginner",path:"Foundations",
+    desc:"A beginner-friendly course covering Python programming foundations.",
+    url:"https://www.py4e.com/"
+  },
+  {
+    title:"Pandas Getting Started",category:"Python",type:"Tutorial",level:"Beginner",path:"Foundations",
+    desc:"Load, explore, clean and transform tabular datasets.",
+    url:"https://pandas.pydata.org/docs/getting_started/"
+  },
+  {
+    title:"Python Packaging User Guide",category:"Python",type:"Documentation",level:"Intermediate",path:"Cloud & Production",
+    desc:"Understand environments, packages and dependency management.",
+    url:"https://packaging.python.org/en/latest/"
+  },
+  {
+    title:"Apache Spark Documentation",category:"PySpark",type:"Documentation",level:"Intermediate",path:"Spark & Lakehouse",
+    desc:"Official documentation for Spark APIs, concepts and deployment.",
+    url:"https://spark.apache.org/docs/latest/"
+  },
+  {
+    title:"PySpark API Reference",category:"PySpark",type:"Documentation",level:"Intermediate",path:"Spark & Lakehouse",
+    desc:"Explore DataFrames, functions, types and the PySpark API.",
+    url:"https://spark.apache.org/docs/latest/api/python/"
+  },
+  {
+    title:"Spark SQL and DataFrames Guide",category:"PySpark",type:"Documentation",level:"Intermediate",path:"Spark & Lakehouse",
+    desc:"Understand structured processing, joins, aggregations and SQL.",
+    url:"https://spark.apache.org/docs/latest/sql-programming-guide.html"
+  },
+  {
+    title:"Spark Performance Tuning",category:"PySpark",type:"Documentation",level:"Advanced",path:"Spark & Lakehouse",
+    desc:"Study partitioning, caching, join strategies and adaptive query execution.",
+    url:"https://spark.apache.org/docs/latest/sql-performance-tuning.html"
+  },
+  {
+    title:"Spark Structured Streaming",category:"PySpark",type:"Documentation",level:"Advanced",path:"Spark & Lakehouse",
+    desc:"Learn streaming DataFrame APIs, event-time processing and output modes.",
+    url:"https://spark.apache.org/docs/latest/streaming/index.html"
+  },
+  {
+    title:"Databricks Documentation",category:"Databricks",type:"Documentation",level:"Beginner",path:"Spark & Lakehouse",
+    desc:"Get started with the Databricks platform and its main capabilities.",
+    url:"https://docs.databricks.com/"
+  },
+  {
+    title:"Databricks Learning",category:"Databricks",type:"Course",level:"Beginner",path:"Spark & Lakehouse",
+    desc:"Find training and learning material for Databricks technologies.",
+    url:"https://www.databricks.com/learn"
+  },
+  {
+    title:"Delta Lake Documentation",category:"Databricks",type:"Documentation",level:"Intermediate",path:"Spark & Lakehouse",
+    desc:"Understand transactions, table versions, schema enforcement and evolution.",
+    url:"https://docs.delta.io/latest/index.html"
+  },
+  {
+    title:"Delta Lake Quick Start",category:"Databricks",type:"Tutorial",level:"Intermediate",path:"Spark & Lakehouse",
+    desc:"Try common Delta Lake operations and learn the basic table workflow.",
+    url:"https://docs.delta.io/quick-start.html"
+  },
+  {
+    title:"Azure Data Factory Documentation",category:"Azure",type:"Documentation",level:"Beginner",path:"Cloud & Production",
+    desc:"Learn pipelines, activities, linked services, datasets and triggers.",
+    url:"https://learn.microsoft.com/en-us/azure/data-factory/"
+  },
+  {
+    title:"Azure Data Lake Storage Gen2",category:"Azure",type:"Documentation",level:"Intermediate",path:"Cloud & Production",
+    desc:"Learn cloud storage concepts, access control and data lake design.",
+    url:"https://learn.microsoft.com/en-us/azure/storage/blobs/data-lake-storage-introduction"
+  },
+  {
+    title:"Azure Databricks Documentation",category:"Azure",type:"Documentation",level:"Intermediate",path:"Cloud & Production",
+    desc:"Explore Azure Databricks setup, data engineering and governance.",
+    url:"https://learn.microsoft.com/en-us/azure/databricks/"
+  },
+  {
+    title:"Azure Well-Architected Framework",category:"Azure",type:"Documentation",level:"Advanced",path:"Cloud & Production",
+    desc:"Review reliability, security, cost optimization and operational excellence.",
+    url:"https://learn.microsoft.com/en-us/azure/well-architected/"
+  },
+  {
+    title:"Apache Kafka Documentation",category:"Kafka",type:"Documentation",level:"Intermediate",path:"Cloud & Production",
+    desc:"Understand topics, partitions, producers, consumers and Kafka operations.",
+    url:"https://kafka.apache.org/documentation/"
+  },
+  {
+    title:"Kafka Design Documentation",category:"Kafka",type:"Documentation",level:"Advanced",path:"Cloud & Production",
+    desc:"Study Kafka design concepts, delivery semantics and system architecture.",
+    url:"https://kafka.apache.org/documentation/#design"
+  },
+  {
+    title:"Confluent Developer Courses",category:"Kafka",type:"Course",level:"Beginner",path:"Cloud & Production",
+    desc:"Follow guided Kafka learning paths and practical exercises.",
+    url:"https://developer.confluent.io/"
+  },
+  {
+    title:"Apache Airflow Documentation",category:"Data Engineering",type:"Documentation",level:"Intermediate",path:"Cloud & Production",
+    desc:"Learn DAGs, operators, scheduling, retries and workflow orchestration.",
+    url:"https://airflow.apache.org/docs/"
+  },
+  {
+    title:"dbt Documentation",category:"Data Engineering",type:"Documentation",level:"Intermediate",path:"Cloud & Production",
+    desc:"Explore SQL-based transformations, testing, documentation and lineage.",
+    url:"https://docs.getdbt.com/"
+  },
+  {
+    title:"Great Expectations Documentation",category:"Data Engineering",type:"Documentation",level:"Intermediate",path:"Cloud & Production",
+    desc:"Learn how to define, run and maintain data quality checks.",
+    url:"https://docs.greatexpectations.io/"
+  },
+  {
+    title:"Data Engineering Zoomcamp",category:"Data Engineering",type:"Course",level:"Intermediate",path:"Foundations",
+    desc:"A practical course covering batch, streaming, orchestration and cloud tools.",
+    url:"https://github.com/DataTalksClub/data-engineering-zoomcamp"
+  },
+  {
+    title:"Designing Data-Intensive Applications Resources",category:"Data Engineering",type:"Tutorial",level:"Advanced",path:"Cloud & Production",
+    desc:"Explore foundational distributed-systems concepts useful for data platforms.",
+    url:"https://dataintensive.net/"
+  },
+  {
+    title:"GitHub Actions Documentation",category:"Data Engineering",type:"Documentation",level:"Intermediate",path:"Cloud & Production",
+    desc:"Learn workflow automation and CI/CD practices for repositories and projects.",
+    url:"https://docs.github.com/en/actions"
+  },
+  {
+    title:"LeetCode Interview Problems",category:"Interview Prep",type:"Practice",level:"Intermediate",path:"Foundations",
+    desc:"Practise coding and SQL problems commonly used in technical interviews.",
+    url:"https://leetcode.com/problemset/"
+  },
+  {
+    title:"Data Engineering Interview Questions",category:"Interview Prep",type:"Tutorial",level:"Intermediate",path:"Foundations",
+    desc:"Review common concepts and question patterns for data engineering roles.",
+    url:"https://github.com/data-engineering-community/data-engineering-wiki"
+  },
+  {
+    title:"System Design Primer",category:"Interview Prep",type:"Practice",level:"Advanced",path:"Cloud & Production",
+    desc:"Study scalability, caching, databases, queues and distributed system design.",
+    url:"https://github.com/donnemartin/system-design-primer"
+  },
+  {
+    title:"SQL Interview Questions",category:"Interview Prep",type:"Practice",level:"Intermediate",path:"Foundations",
+    desc:"Build fluency with query patterns and SQL problem-solving.",
+    url:"https://www.hackerrank.com/domains/sql"
+  },
+  {
+    title:"Build a Batch Data Pipeline",category:"Data Engineering",type:"Project",level:"Intermediate",path:"Foundations",
+    desc:"Project idea: ingest a public dataset, validate it, transform it and publish curated tables.",
+    url:"https://github.com/DataTalksClub/data-engineering-zoomcamp"
+  },
+  {
+    title:"Build a Streaming Pipeline",category:"Kafka",type:"Project",level:"Advanced",path:"Cloud & Production",
+    desc:"Project idea: publish events, consume them, process records and monitor failures.",
+    url:"https://kafka.apache.org/documentation/"
+  },
+  {
+    title:"Databricks Lakehouse Fundamentals",category:"Databricks",type:"Course",level:"Beginner",path:"Spark & Lakehouse",
+    desc:"Review core lakehouse architecture and platform fundamentals.",
+    url:"https://www.databricks.com/learn/training/lakehouse-fundamentals"
+  }
+];
+
+const categoryGrid = document.getElementById("categoryGrid");
+const resourceGrid = document.getElementById("resourceGrid");
+const searchInput = document.getElementById("searchInput");
+const categoryFilter = document.getElementById("categoryFilter");
+const levelFilter = document.getElementById("levelFilter");
+const typeFilter = document.getElementById("typeFilter");
+const resultCount = document.getElementById("resultCount");
+const emptyState = document.getElementById("emptyState");
+
+let selectedCategory = "All";
+
+function createResourceCard(resource) {
+  const card = document.createElement("article");
+  card.className = "resource";
+
+  const top = document.createElement("div");
+  top.className = "resource-top";
+
+  const tag = document.createElement("span");
+  tag.className = "tag";
+  tag.textContent = resource.category;
+
+  const level = document.createElement("span");
+  level.className = "level";
+  level.textContent = resource.level;
+
+  top.append(tag, level);
+
+  const title = document.createElement("h3");
+  title.textContent = resource.title;
+
+  const description = document.createElement("p");
+  description.textContent = resource.desc;
+
+  const meta = document.createElement("div");
+  meta.className = "meta";
+
+  const type = document.createElement("span");
+  type.textContent = resource.type;
+
+  const path = document.createElement("span");
+  path.textContent = resource.path;
+
+  meta.append(type, path);
+
+  const footer = document.createElement("div");
+  footer.className = "resource-footer";
+
+  const external = document.createElement("span");
+  external.className = "level";
+  external.textContent = "External resource ↗";
+
+  const link = document.createElement("a");
+  link.href = resource.url;
+  link.target = "_blank";
+  link.rel = "noopener noreferrer";
+  link.textContent = "Open resource →";
+
+  footer.append(external, link);
+  card.append(top, title, description, meta, footer);
+
+  return card;
+}
+
+function renderCategories() {
+  categoryGrid.innerHTML = "";
+
+  categories.forEach(category => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "topic";
+    button.classList.toggle("active", selectedCategory === category.name);
+    button.setAttribute("aria-pressed", String(selectedCategory === category.name));
+
+    const icon = document.createElement("span");
+    icon.className = "ico";
+    icon.textContent = category.icon;
+
+    const title = document.createElement("strong");
+    title.textContent = category.name;
+
+    const description = document.createElement("small");
+    description.textContent = category.desc;
+
+    button.append(icon, title, description);
+
+    button.addEventListener("click", () => {
+      selectedCategory = selectedCategory === category.name ? "All" : category.name;
+      categoryFilter.value = selectedCategory;
+      renderCategories();
+      renderResources();
+      document.getElementById("resources").scrollIntoView({
+        behavior:"smooth",
+        block:"start"
+      });
+    });
+
+    categoryGrid.appendChild(button);
+
+    const option = document.createElement("option");
+    option.value = category.name;
+    option.textContent = category.name;
+    categoryFilter.appendChild(option);
+  });
+}
+
+function renderResources() {
+  const query = searchInput.value.trim().toLowerCase();
+  const category = categoryFilter.value;
+  const level = levelFilter.value;
+  const type = typeFilter.value;
+
+  const filtered = resources.filter(resource => {
+    const searchableText = [
+      resource.title,
+      resource.category,
+      resource.type,
+      resource.level,
+      resource.path,
+      resource.desc
+    ].join(" ").toLowerCase();
+
+    return (!query || searchableText.includes(query))
+      && (category === "All" || resource.category === category)
+      && (level === "All" || resource.level === level)
+      && (type === "All" || resource.type === type);
+  });
+
+  resourceGrid.innerHTML = "";
+
+  filtered.forEach(resource => {
+    resourceGrid.appendChild(createResourceCard(resource));
+  });
+
+  resultCount.textContent =
+    "Showing " + filtered.length + " of " + resources.length + " resources";
+
+  emptyState.style.display = filtered.length === 0 ? "block" : "none";
+
+  document.getElementById("resourceStat").textContent = resources.length;
+  document.getElementById("categoryStat").textContent = categories.length;
+}
+
+function resetFilters() {
+  searchInput.value = "";
+  categoryFilter.value = "All";
+  levelFilter.value = "All";
+  typeFilter.value = "All";
+  selectedCategory = "All";
+  renderCategories();
+  renderResources();
+}
+
+searchInput.addEventListener("input", renderResources);
+
+categoryFilter.addEventListener("change", () => {
+  selectedCategory = categoryFilter.value;
+  renderCategories();
+  renderResources();
+});
+
+levelFilter.addEventListener("change", renderResources);
+typeFilter.addEventListener("change", renderResources);
+
+document.getElementById("resetButton").addEventListener("click", resetFilters);
+
+document.querySelectorAll("[data-path]").forEach(button => {
+  button.addEventListener("click", () => {
+    const selectedPath = button.dataset.path;
+
+    searchInput.value = "";
+    categoryFilter.value = "All";
+    levelFilter.value = "All";
+    typeFilter.value = "All";
+    selectedCategory = "All";
+
+    const pathResources = resources.filter(
+      resource => resource.path === selectedPath
+    );
+
+    resourceGrid.innerHTML = "";
+
+    pathResources.forEach(resource => {
+      resourceGrid.appendChild(createResourceCard(resource));
+    });
+
+    resultCount.textContent =
+      "Learning path: " + selectedPath + " · " +
+      pathResources.length + " resources";
+
+    emptyState.style.display = pathResources.length === 0 ? "block" : "none";
+
+    renderCategories();
+
+    document.getElementById("resources").scrollIntoView({
+      behavior:"smooth",
+      block:"start"
+    });
+  });
+});
+
+renderCategories();
+renderResources();
+</script>
+</body>
+</html>
