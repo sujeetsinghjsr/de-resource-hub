@@ -1184,6 +1184,172 @@
 }
 
 /* ===== END INTERACTIVE QUIZ STYLES ===== */
+    
+/* ===== FIND THE BUG LAB ===== */
+
+.bug-lab {
+  margin: 28px 0;
+  padding: 28px;
+  background: #111827;
+  border: 1px solid #263244;
+  border-radius: 18px;
+}
+
+.bug-lab-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.bug-lab-label {
+  color: #fbbf24;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+}
+
+.bug-lab-count {
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+.bug-lab h3 {
+  color: #f1f5f9;
+  font-size: 23px;
+  line-height: 1.45;
+  margin: 12px 0;
+}
+
+.bug-lab-description {
+  color: #cbd5e1;
+  line-height: 1.75;
+}
+
+.bug-lab-code {
+  padding: 18px;
+  margin: 18px 0;
+  background: #080d18;
+  border: 1px solid #263244;
+  border-radius: 10px;
+  overflow-x: auto;
+  color: #bfdbfe;
+  font: 13px/1.8 monospace;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.bug-lab-options {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.bug-lab-option {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  background: #0b1220;
+  color: #e2e8f0;
+  text-align: left;
+  line-height: 1.6;
+  font: inherit;
+  cursor: pointer;
+}
+
+.bug-lab-option:hover:not(:disabled) {
+  border-color: #60a5fa;
+  background: #142238;
+}
+
+.bug-lab-option:disabled {
+  cursor: default;
+  opacity: 1;
+}
+
+.bug-lab-option.correct {
+  border-color: #22c55e;
+  background: #10251d;
+}
+
+.bug-lab-option.incorrect {
+  border-color: #f87171;
+  background: #2a171b;
+}
+
+.bug-lab-feedback {
+  margin-top: 18px;
+  padding: 18px;
+  background: #0b1424;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  color: #cbd5e1;
+  line-height: 1.75;
+}
+
+.bug-lab-feedback h4 {
+  color: #93c5fd;
+  margin: 0 0 10px;
+}
+
+.bug-lab-feedback p {
+  margin: 10px 0;
+}
+
+.bug-lab-feedback pre {
+  padding: 14px;
+  background: #080d18;
+  border-radius: 8px;
+  color: #dbeafe;
+  font: 13px/1.8 monospace;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  overflow-x: auto;
+}
+
+.bug-lab-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.bug-lab-btn {
+  padding: 11px 17px;
+  border: 1px solid #3b82f6;
+  border-radius: 9px;
+  background: #2563eb;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.bug-lab-btn.secondary {
+  border-color: #475569;
+  background: transparent;
+  color: #e2e8f0;
+}
+
+.bug-lab-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .bug-lab {
+    padding: 19px;
+  }
+
+  .bug-lab h3 {
+    font-size: 20px;
+  }
+}
+
+/* ===== END FIND THE BUG LAB ===== */
   </style>
 </head>
 
@@ -1202,6 +1368,7 @@
         <a href="#resources">Resources</a>
         <a href="#daily-challenge">Daily Challenge</a>
         <a href="#quiz">Interview Quiz</a>
+        <a href="#bug-lab">Find the Bug</a>
         <a href="#roadmap">Roadmap</a>
         <a href="#projects">Projects</a>
         <a href="#interviews">Interview Prep</a>
@@ -1507,6 +1674,68 @@
   </div>
 </section>
 <!-- END INTERACTIVE DATA ENGINEERING QUIZ -->
+    
+<!-- FIND THE BUG LAB -->
+<section id="bug-lab" class="alternate">
+  <div class="container">
+    <div class="section-heading">
+      <div>
+        <div class="section-kicker">Production troubleshooting</div>
+        <h2>Find the Bug: Data Engineering Lab</h2>
+        <p class="section-description">
+          Investigate realistic data engineering failures. Identify
+          the root cause, check your reasoning, and learn how to fix
+          the problem.
+        </p>
+      </div>
+    </div>
+
+    <article class="bug-lab" id="bug-lab-app">
+      <div class="bug-lab-header">
+        <span class="bug-lab-label">Debugging challenge</span>
+        <span class="bug-lab-count" id="bug-lab-count">
+          Scenario 1 of 4
+        </span>
+      </div>
+
+      <h3 id="bug-lab-title">Loading scenario...</h3>
+
+      <p class="bug-lab-description" id="bug-lab-description"></p>
+
+      <pre class="bug-lab-code" id="bug-lab-code"></pre>
+
+      <p class="bug-lab-description" id="bug-lab-task"></p>
+
+      <div class="bug-lab-options" id="bug-lab-options"></div>
+
+      <div
+        class="bug-lab-feedback"
+        id="bug-lab-feedback"
+        role="status"
+        aria-live="polite"
+        hidden>
+      </div>
+
+      <div class="bug-lab-actions">
+        <button
+          type="button"
+          class="bug-lab-btn"
+          id="bug-lab-next"
+          disabled>
+          Next Scenario
+        </button>
+
+        <button
+          type="button"
+          class="bug-lab-btn secondary"
+          id="bug-lab-restart">
+          Start Again
+        </button>
+      </div>
+    </article>
+  </div>
+</section>
+<!-- END FIND THE BUG LAB -->
     <section id="projects">
       <div class="container">
         <div class="section-heading">
@@ -2562,6 +2791,298 @@
   });
 
   renderQuestion();
+})();
+</script>
+  
+<script>
+(function () {
+  const scenarios = [
+    {
+      topic: "SQL",
+      title: "Bug 1: Why is the trade count increasing?",
+      description:
+        "A pipeline joins trades to an instrument reference table. After the join, the number of rows is much higher than expected.",
+      code:
+        "SELECT t.trade_id, t.instrument_id, r.instrument_name\n" +
+        "FROM trades t\n" +
+        "JOIN instrument_reference r\n" +
+        "  ON t.instrument_id = r.instrument_id;",
+      task:
+        "What is the most likely root cause if instrument_reference contains multiple rows for the same instrument_id?",
+      options: [
+        "The SELECT statement always duplicates every row",
+        "The join key is not unique on the reference side, causing one trade to match multiple reference rows",
+        "SQL joins cannot be used on identifiers",
+        "The query needs ORDER BY to remove duplicates"
+      ],
+      correct: 1,
+      rootCause:
+        "A single trade can match multiple reference records when instrument_id is repeated in the lookup table. The join multiplies rows. DISTINCT is not a reliable fix because the matched reference values may differ.",
+      fix:
+        "First define which reference record is valid for each instrument. If the business rule is to use the latest record, rank reference rows and keep one deterministic winner before joining.",
+      solution:
+        "WITH ranked_reference AS (\n" +
+        "  SELECT r.*,\n" +
+        "         ROW_NUMBER() OVER (\n" +
+        "           PARTITION BY instrument_id\n" +
+        "           ORDER BY effective_timestamp DESC,\n" +
+        "                    reference_record_id DESC\n" +
+        "         ) AS rn\n" +
+        "  FROM instrument_reference r\n" +
+        ")\n" +
+        "SELECT t.trade_id, t.instrument_id, r.instrument_name\n" +
+        "FROM trades t\n" +
+        "JOIN ranked_reference r\n" +
+        "  ON t.instrument_id = r.instrument_id\n" +
+        " AND r.rn = 1;",
+      lesson:
+        "Validate uniqueness on the join key and check row counts before and after joins. The ordering columns must implement the real business rule and provide a deterministic tie-breaker."
+    },
+    {
+      topic: "PYTHON",
+      title: "Bug 2: Why does the transformation crash?",
+      description:
+        "A Python ingestion job normalises an optional counterparty name. Some source records contain a null value represented by None.",
+      code:
+        "def normalise_name(value):\n" +
+        "    return value.strip().upper()\n\n" +
+        "print(normalise_name(None))",
+      task:
+        "What is the immediate cause of the failure?",
+      options: [
+        "Python strings cannot use upper()",
+        "None has no strip() method",
+        "Functions cannot accept arguments",
+        "The code must use a Spark DataFrame"
+      ],
+      correct: 1,
+      rootCause:
+        "None is not a string and does not provide the strip() method. Calling value.strip() raises an AttributeError when value is None.",
+      fix:
+        "Define how missing names should be represented. If a missing value should remain missing, preserve None. If the business rule permits an empty string, handle it explicitly instead.",
+      solution:
+        "def normalise_name(value):\n" +
+        "    if value is None:\n" +
+        "        return None\n" +
+        "    return value.strip().upper()\n\n" +
+        "print(normalise_name(None))  # None",
+      lesson:
+        "Validate nullable inputs at system boundaries. Also consider unexpected types, whitespace-only values, logging, and whether missing data should be rejected or quarantined rather than silently replaced."
+    },
+    {
+      topic: "SPARK",
+      title: "Bug 3: Why did the Spark join inflate the output?",
+      description:
+        "A Spark job joins transactions to a customer dimension. The output contains more rows than the transaction input.",
+      code:
+        "result = transactions.join(\n" +
+        "    customers,\n" +
+        "    on='customer_id',\n" +
+        "    how='left'\n" +
+        ")\n\n" +
+        "print('Input:', transactions.count())\n" +
+        "print('Output:', result.count())",
+      task:
+        "What should you investigate first?",
+      options: [
+        "The join key has duplicate customer records on the dimension side",
+        "Every left join must reduce the row count",
+        "Spark always duplicates data when using customer_id",
+        "The result needs cache() to remove duplicates"
+      ],
+      correct: 0,
+      rootCause:
+        "If customers contains multiple rows for the same customer_id, each matching transaction can join to multiple customer records. A left join preserves unmatched transactions, but it does not guarantee that the output row count equals the input.",
+      fix:
+        "Check the uniqueness of customer_id and confirm the intended dimension model. If the requirement is one current customer row, filter or rank the dimension using the correct current-record and effective-date rules before joining.",
+      solution:
+        "from pyspark.sql import functions as F\nfrom pyspark.sql.window import Window\n\nwindow_spec = Window.partitionBy(\n    'customer_id'\n).orderBy(\n    F.col('effective_timestamp').desc(),\n    F.col('customer_record_id').desc()\n)\n\ncustomers_current = (\n    customers\n    .withColumn('rn', F.row_number().over(window_spec))\n    .filter(F.col('rn') == 1)\n    .drop('rn')\n)\n\nresult = transactions.join(\n    customers_current,\n    on='customer_id',\n    how='left'\n)",
+      lesson:
+        "For a large Spark job, also inspect the execution plan, shuffle size, partition skew, and input data distribution. Fix the data-model issue before trying performance tuning."
+    },
+    {
+      topic: "PIPELINES",
+      title: "Bug 4: Why did the rerun create duplicate records?",
+      description:
+        "A scheduled pipeline writes trade records to a target table. The run fails after some records are written. Rerunning the same batch inserts those records again.",
+      code:
+        "for row in batch:\n" +
+        "    target.insert(row)\n\n" +
+        "# The job fails partway through.\n" +
+        "# The same batch is rerun.",
+      task:
+        "Which design best addresses this failure?",
+      options: [
+        "Increase the number of retries without changing the write logic",
+        "Delete the entire target table before every run",
+        "Use a stable business key and an idempotent upsert or merge strategy",
+        "Ignore the duplicates because the next run will fix them"
+      ],
+      correct: 2,
+      rootCause:
+        "The write operation is not idempotent. Reprocessing a record inserts another copy rather than recognising that the same business record has already been processed.",
+      fix:
+        "Use a stable key, such as a source trade identifier combined with the appropriate version or event identifier. Stage and validate the batch, then perform a merge or upsert with well-defined insert and update rules. Use transactions or checkpoints where supported.",
+      solution:
+        "MERGE INTO target_trades AS t\n" +
+        "USING staged_trades AS s\n" +
+        "ON t.trade_id = s.trade_id\n" +
+        "WHEN MATCHED THEN UPDATE SET\n" +
+        "  t.quantity = s.quantity,\n" +
+        "  t.price = s.price\n" +
+        "WHEN NOT MATCHED THEN INSERT (\n" +
+        "  trade_id, quantity, price\n" +
+        ") VALUES (\n" +
+        "  s.trade_id, s.quantity, s.price\n" +
+        ");",
+      lesson:
+        "This is illustrative SQL; MERGE syntax and transaction guarantees depend on the database or table format. First deduplicate the staged source by key, define update semantics, and ensure the target key represents the true business identity."
+    }
+  ];
+
+  const root = document.getElementById("bug-lab-app");
+  if (!root || root.dataset.initialized === "true") return;
+  root.dataset.initialized = "true";
+
+  const count = document.getElementById("bug-lab-count");
+  const title = document.getElementById("bug-lab-title");
+  const description = document.getElementById("bug-lab-description");
+  const code = document.getElementById("bug-lab-code");
+  const task = document.getElementById("bug-lab-task");
+  const optionsArea = document.getElementById("bug-lab-options");
+  const feedback = document.getElementById("bug-lab-feedback");
+  const nextButton = document.getElementById("bug-lab-next");
+  const restartButton = document.getElementById("bug-lab-restart");
+
+  let currentIndex = 0;
+  let answered = false;
+
+  function renderScenario() {
+    const item = scenarios[currentIndex];
+    answered = false;
+
+    count.textContent =
+      "Scenario " + (currentIndex + 1) + " of " + scenarios.length +
+      " · " + item.topic;
+
+    title.textContent = item.title;
+    description.textContent = item.description;
+    code.textContent = item.code;
+    task.textContent = item.task;
+
+    feedback.replaceChildren();
+    feedback.hidden = true;
+    optionsArea.replaceChildren();
+
+    nextButton.disabled = true;
+    nextButton.textContent =
+      currentIndex === scenarios.length - 1
+        ? "Finish Lab"
+        : "Next Scenario";
+
+    item.options.forEach(function (optionText, index) {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "bug-lab-option";
+      button.textContent =
+        String.fromCharCode(65 + index) + ". " + optionText;
+
+      button.addEventListener("click", function () {
+        if (answered) return;
+        answered = true;
+
+        const isCorrect = index === item.correct;
+
+        Array.from(optionsArea.children).forEach(function (option, i) {
+          option.disabled = true;
+
+          if (i === item.correct) {
+            option.classList.add("correct");
+          } else if (i === index && !isCorrect) {
+            option.classList.add("incorrect");
+          }
+        });
+
+        const heading = document.createElement("h4");
+        heading.textContent = isCorrect
+          ? "Correct — root cause identified"
+          : "Not quite — review the root cause";
+
+        const cause = document.createElement("p");
+        cause.textContent = item.rootCause;
+
+        const fixHeading = document.createElement("h4");
+        fixHeading.textContent = "How to fix it";
+
+        const fixText = document.createElement("p");
+        fixText.textContent = item.fix;
+
+        const solutionHeading = document.createElement("h4");
+        solutionHeading.textContent = "Example solution";
+
+        const solution = document.createElement("pre");
+        solution.textContent = item.solution;
+
+        const lessonHeading = document.createElement("h4");
+        lessonHeading.textContent = "Production lesson";
+
+        const lesson = document.createElement("p");
+        lesson.textContent = item.lesson;
+
+        feedback.append(
+          heading,
+          cause,
+          fixHeading,
+          fixText,
+          solutionHeading,
+          solution,
+          lessonHeading,
+          lesson
+        );
+
+        feedback.hidden = false;
+        nextButton.disabled = false;
+      });
+
+      optionsArea.appendChild(button);
+    });
+  }
+
+  nextButton.addEventListener("click", function () {
+    if (!answered) return;
+
+    if (currentIndex === scenarios.length - 1) {
+      count.textContent = "Lab completed";
+      title.textContent = "You've completed the debugging lab!";
+      description.textContent =
+        "You've explored four common Data Engineering failure scenarios.";
+      code.textContent = "";
+      task.textContent =
+        "Next step: practise explaining the root cause, the fix, and the production safeguards for each scenario.";
+      optionsArea.replaceChildren();
+
+      feedback.replaceChildren();
+      const message = document.createElement("p");
+      message.textContent =
+        "Review the solutions above, then start again to practise diagnosing each problem.";
+      feedback.appendChild(message);
+      feedback.hidden = false;
+
+      nextButton.disabled = true;
+      nextButton.textContent = "Lab Completed";
+      return;
+    }
+
+    currentIndex++;
+    renderScenario();
+  });
+
+  restartButton.addEventListener("click", function () {
+    currentIndex = 0;
+    renderScenario();
+  });
+
+  renderScenario();
 })();
 </script>
 </body>
