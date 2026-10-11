@@ -5373,5 +5373,189 @@ h1,h2{color:#fff}
 })();
 </script>
 <!-- ===== END HERO TECH ORBIT ===== -->
+  <!-- ===== PROGRESS TRACKER ===== -->
+<style>
+.pg-panel{margin:0 0 22px;padding:18px 20px;border:1px solid #1C2740;border-radius:14px;background:linear-gradient(160deg,#0F1729,#0B1220)}
+.pg-row{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-size:13px;color:#9AA9C0}
+.pg-row b{color:#fff;font-size:15px}
+.pg-track{height:8px;margin-top:12px;border-radius:99px;background:#1C2740;overflow:hidden}
+.pg-fill{height:100%;width:0;background:linear-gradient(90deg,#22D3EE,#8B5CF6);transition:width .4s ease}
+.pg-reset{background:none;border:none;color:#67E8F9;font-size:12px;cursor:pointer}
+.pg-btn{padding:4px 10px;border:1px solid #2A3856;border-radius:99px;background:transparent;color:#9FB0C8;font-size:11px;font-weight:700;cursor:pointer;transition:.2s;white-space:nowrap}
+.pg-btn:hover{border-color:#22D3EE;color:#fff}
+.pg-btn.on{background:rgba(52,211,153,.12);border-color:rgba(52,211,153,.45);color:#34D399}
+.roadmap-card .pg-btn{margin:14px 0 0 8px}
+</style>
+<script>
+(function(){
+  var KEY="deh-progress-v1",st={r:[],s:[]};
+  try{var x=JSON.parse(localStorage.getItem(KEY)||"null");if(x&&x.r&&x.s)st=x}catch(e){}
+  function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
+  function total(){return(typeof resources!=="undefined"?resources.length:24)+4}
+
+  var filters=document.querySelector("#resources .filters");
+  if(!filters)return;
+  var panel=document.createElement("div");panel.className="pg-panel";
+  panel.innerHTML='<div class="pg-row"><span><b id="pg-pct">0%</b> of your learning path complete</span><span id="pg-detail"></span><button class="pg-reset" type="button" id="pg-reset">Reset progress</button></div><div class="pg-track"><div class="pg-fill" id="pg-fill"></div></div>';
+  filters.parentNode.insertBefore(panel,filters);
+
+  function update(){
+    var done=st.r.length+st.s.length,pct=Math.min(100,Math.round(done/total()*100));
+    document.getElementById("pg-pct").textContent=pct+"%";
+    document.getElementById("pg-fill").style.width=pct+"%";
+    document.getElementById("pg-detail").textContent=st.r.length+" resources · "+st.s.length+"/4 roadmap stages";
+  }
+  function paint(b,on){b.classList.toggle("on",on);b.setAttribute("aria-pressed",String(on));b.textContent=on?"Done ✓":"Mark done"}
+  function mk(arr,key){
+    var b=document.createElement("button");b.type="button";b.className="pg-btn";
+    paint(b,arr.indexOf(key)>-1);
+    b.onclick=function(){
+      var i=arr.indexOf(key);
+      if(i>-1)arr.splice(i,1);else arr.push(key);
+      paint(b,i===-1);save();update();
+    };
+    return b;
+  }
+  function decorate(){
+    document.querySelectorAll("#resource-grid .resource-card").forEach(function(c){
+      if(c.querySelector(".pg-btn"))return;
+      var bottom=c.querySelector(".card-bottom"),link=c.querySelector(".resource-link"),h=c.querySelector("h3");
+      if(!bottom||!link||!h)return;
+      bottom.insertBefore(mk(st.r,h.textContent),link);
+    });
+  }
+  var grid=document.getElementById("resource-grid");
+  if(grid)new MutationObserver(decorate).observe(grid,{childList:true});
+  decorate();
+
+  document.querySelectorAll(".roadmap-card").forEach(function(c,i){
+    var d=c.querySelector(".duration");
+    var b=mk(st.s,i);
+    if(d)d.insertAdjacentElement("afterend",b);else c.appendChild(b);
+  });
+
+  document.getElementById("pg-reset").onclick=function(){
+    if(!confirm("Reset all saved progress?"))return;
+    st={r:[],s:[]};save();
+    document.querySelectorAll(".pg-btn").forEach(function(b){paint(b,false)});
+    update();
+  };
+  update();
+})();
+</script>
+<!-- ===== END PROGRESS TRACKER ===== -->
+  <!-- ===== DATA MODELLING SECTION ===== -->
+<style>
+.dm-shell{border:1px solid #1C2740;border-radius:18px;padding:24px;background:linear-gradient(160deg,#0F1729,#0B1220)}
+.dm-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.dm-tab{padding:9px 15px;border:1px solid #1C2740;border-radius:99px;background:transparent;color:#9FB0C8;font-size:13px;font-weight:600;cursor:pointer;transition:.2s}
+.dm-tab:hover,.dm-tab.on{border-color:#22D3EE;background:rgba(34,211,238,.1);color:#fff}
+.dm-body h3{color:#fff;font-size:20px;margin-bottom:8px}
+.dm-body p,.dm-body li{color:#B4BED0;font-size:14px;line-height:1.8}
+.dm-body ul{padding-left:20px;margin:10px 0}
+.dm-body code{font-family:"JetBrains Mono",Consolas,monospace;color:#A5F3FC;font-size:12.5px}
+.dm-star{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0;max-width:560px}
+.dm-box{padding:12px 8px;border:1px solid #24324F;border-radius:10px;background:#0A1120;text-align:center;font:600 12px "JetBrains Mono",Consolas,monospace;color:#F1F5F9}
+.dm-box small{display:block;margin-top:4px;font:400 10.5px Inter,sans-serif;color:#94A3B8}
+.dm-box.fact{grid-column:2;grid-row:2;border-color:#22D3EE;background:rgba(34,211,238,.1);box-shadow:0 0 24px rgba(34,211,238,.18)}
+.dm-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:12.5px}
+.dm-table th,.dm-table td{padding:9px 10px;border:1px solid #1C2740;text-align:left;color:#C9D3E3}
+.dm-table th{background:#0A1120;color:#67E8F9;font-weight:600}
+.dm-wrap{overflow-x:auto}
+.dm-pre{padding:14px;margin:12px 0;border:1px solid #1C2740;border-radius:10px;background:#050912;color:#A5F3FC;font:12.5px/1.7 "JetBrains Mono",Consolas,monospace;overflow-x:auto;white-space:pre}
+.dm-two{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px}
+.dm-two>div{padding:16px;border:1px solid #1C2740;border-radius:12px;background:#0A1120}
+.dm-two h4{color:#67E8F9;margin-bottom:6px}
+.dm-tip{margin-top:16px;padding:14px;border-left:3px solid #8B5CF6;border-radius:0 8px 8px 0;background:#0A1120;color:#B4BED0;font-size:13.5px;line-height:1.7}
+.dm-tip strong{color:#fff}
+@media(max-width:700px){.dm-two{grid-template-columns:1fr}.dm-shell{padding:16px}.dm-star{grid-template-columns:repeat(2,1fr)}.dm-box.fact{grid-column:1/-1;grid-row:auto}}
+</style>
+<script>
+(function(){
+  var projects=document.getElementById("projects");
+  if(!projects)return;
+  var T=[
+  {n:"Star schema",h:'<h3>Star schema: facts surrounded by dimensions</h3><p>A central <b>fact table</b> stores measurable events. Surrounding <b>dimension tables</b> describe who, what, where and when. Queries join one fact to a few dimensions, which keeps analytics simple and fast.</p><div class="dm-star"><div class="dm-box">dim_date</div><div class="dm-box">dim_instrument</div><div class="dm-box">dim_counterparty</div><div class="dm-box">dim_book</div><div class="dm-box fact">fact_trades<small>quantity · price · notional</small></div><div class="dm-box">dim_venue</div></div><ul><li><b>Grain first:</b> decide what one fact row means, for example one executed trade.</li><li><b>Surrogate keys:</b> use warehouse-generated keys in dimensions so history can be tracked.</li><li><b>Measures:</b> additive (notional), semi-additive (balances) and non-additive (ratios) behave differently when summed.</li></ul><div class="dm-tip"><strong>Interview tip:</strong> always state the grain before drawing any tables. Most modelling mistakes come from an unclear grain.</div>'},
+  {n:"Slowly changing dimensions",h:'<h3>Slowly changing dimensions (SCD)</h3><p>Dimension attributes change over time, such as a counterparty rating or an instrument classification. The SCD type decides how history is kept.</p><div class="dm-wrap"><table class="dm-table"><tr><th>Type</th><th>Behaviour</th><th>History</th><th>Use when</th></tr><tr><td>Type 1</td><td>Overwrite the old value</td><td>None</td><td>Corrections or unimportant changes</td></tr><tr><td>Type 2</td><td>Add a new row with validity dates</td><td>Full</td><td>Reports must reflect values at the time</td></tr><tr><td>Type 3</td><td>Add a "previous value" column</td><td>One step</td><td>Only the last change matters</td></tr></table></div><div class="dm-pre">-- SCD Type 2 shape\ncounterparty_key | counterparty_id | rating | valid_from | valid_to   | is_current\n101              | C-77            | A      | 2024-01-01 | 2025-06-30 | N\n102              | C-77            | BBB    | 2025-07-01 | 9999-12-31 | Y</div><p>Join facts to the dimension row valid at the event date, not just the current row, if history matters.</p><div class="dm-tip"><strong>Interview tip:</strong> explain how a late-arriving change is handled. It means closing and inserting rows with corrected dates, so mention it.</div>'},
+  {n:"Normalised vs denormalised",h:'<h3>Normalised vs denormalised design</h3><div class="dm-two"><div><h4>Normalised (3NF)</h4><ul><li>Each fact stored once</li><li>Less redundancy, safer updates</li><li>More joins, slower analytics</li><li>Suits operational systems and trusted core layers</li></ul></div><div><h4>Denormalised</h4><ul><li>Attributes copied into wide tables</li><li>Fewer joins, faster reads</li><li>Redundancy, harder corrections</li><li>Suits reporting, gold layers and data products</li></ul></div></div><p style="margin-top:14px">In a medallion architecture, silver is usually cleaned and close to normalised, while gold is shaped for consumers using star schemas or wide tables.</p><div class="dm-tip"><strong>Interview tip:</strong> the right answer is "it depends on the workload". Then name the read pattern, update frequency and data volume that decide it.</div>'},
+  {n:"Fact table types",h:'<h3>Three types of fact table</h3><div class="dm-wrap"><table class="dm-table"><tr><th>Type</th><th>One row per</th><th>Trading example</th></tr><tr><td>Transaction</td><td>Event</td><td>Each executed trade or amendment</td></tr><tr><td>Periodic snapshot</td><td>Entity per period</td><td>End-of-day position per book and instrument</td></tr><tr><td>Accumulating snapshot</td><td>Process instance, updated</td><td>Trade lifecycle: executed → confirmed → settled</td></tr></table></div><ul><li>Transaction facts keep full detail and grow fastest.</li><li>Snapshots make point-in-time questions cheap to answer.</li><li>Accumulating snapshots are updated, so design the merge logic carefully.</li></ul><div class="dm-tip"><strong>Interview tip:</strong> when asked "how would you model positions?", propose a daily snapshot built from transaction facts, and explain how you reconcile the two.</div>'}
+  ];
+  var sec=document.createElement("section");sec.id="data-modelling";sec.className="alternate";
+  sec.innerHTML='<div class="container"><div class="section-heading"><div><div class="section-kicker">Core skill</div><h2>Data modelling essentials</h2><p class="section-description">The design concepts behind warehouses and lakehouses, and the questions interviewers ask about them.</p></div></div><div class="dm-shell"><div class="dm-tabs" role="tablist"></div><div class="dm-body" aria-live="polite"></div></div></div>';
+  projects.parentNode.insertBefore(sec,projects);
+  var tabs=sec.querySelector(".dm-tabs"),body=sec.querySelector(".dm-body");
+  function show(i){
+    body.innerHTML=T[i].h;
+    Array.prototype.forEach.call(tabs.children,function(b,j){b.classList.toggle("on",i===j);b.setAttribute("aria-selected",String(i===j))});
+  }
+  T.forEach(function(t,i){
+    var b=document.createElement("button");b.type="button";b.className="dm-tab";b.setAttribute("role","tab");b.textContent=t.n;
+    b.onclick=function(){show(i)};tabs.appendChild(b);
+  });
+  show(0);
+  var menu=document.querySelector(".nav-menu");
+  if(menu){var a=document.createElement("a");a.href="#data-modelling";a.textContent="Data Modelling";menu.appendChild(a)}
+})();
+</script>
+<!-- ===== END DATA MODELLING SECTION ===== -->
+  <!-- ===== CAPITAL MARKETS TRACK ===== -->
+<style>
+.cm-shell{border:1px solid #1C2740;border-radius:18px;padding:24px;background:linear-gradient(160deg,#0F1729,#0B1220)}
+.cm-flow{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.cm-step{flex:1 1 110px;padding:12px 8px;border:1px solid #24324F;border-radius:10px;background:#0A1120;color:#C9D3E3;font-size:12px;font-weight:600;text-align:center;cursor:pointer;transition:.2s}
+.cm-step span{display:block;margin-bottom:4px;font:600 10px "JetBrains Mono",Consolas,monospace;color:#22D3EE}
+.cm-step:hover,.cm-step.on{border-color:#22D3EE;background:rgba(34,211,238,.1);color:#fff}
+.cm-detail{padding:20px;border:1px solid #1C2740;border-radius:14px;background:#0A1120}
+.cm-detail h3{color:#fff;font-size:19px;margin-bottom:8px}
+.cm-detail h4{margin:14px 0 6px;color:#67E8F9;font-size:13px;letter-spacing:.8px;text-transform:uppercase}
+.cm-detail p,.cm-detail li{color:#B4BED0;font-size:14px;line-height:1.8}
+.cm-detail ul{padding-left:20px}
+.cm-regs{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:22px}
+.cm-reg{padding:20px;border:1px solid #1C2740;border-radius:14px;background:linear-gradient(160deg,#0F1729,#0B1220)}
+.cm-reg b{display:inline-block;margin-bottom:8px;padding:4px 10px;border:1px solid rgba(139,92,246,.35);border-radius:99px;background:rgba(139,92,246,.13);color:#C9B8FF;font:600 11px "JetBrains Mono",Consolas,monospace}
+.cm-reg h3{color:#fff;font-size:16px;margin-bottom:6px}
+.cm-reg p{color:#9AA9C0;font-size:13px;line-height:1.7}
+.cm-note{margin-top:18px;padding:14px 16px;border-left:3px solid #22D3EE;border-radius:0 10px 10px 0;background:rgba(34,211,238,.06);color:#9AA9C0;font-size:13px}
+@media(max-width:900px){.cm-regs{grid-template-columns:1fr}.cm-shell{padding:16px}}
+</style>
+<script>
+(function(){
+  var projects=document.getElementById("projects");
+  if(!projects)return;
+  var S=[
+  {n:"Order",w:"A portfolio manager or client submits an order to buy or sell an instrument, often through an order management system.",d:["Capture order ID, timestamps, side, quantity, limit price and the originating desk.","Keep order and trade IDs linkable, because regulators ask for the chain from order to execution."],q:"Which system is the golden source for order timestamps, and what clock precision does it use?"},
+  {n:"Execution",w:"The order is filled on a venue or with a counterparty, creating one or more executions.",d:["Handle partial fills: one order can produce many executions.","Venue and execution timestamps may disagree, so define which one drives reporting."],q:"How do you link many fills back to a single order without double counting quantity?"},
+  {n:"Trade capture",w:"The trade is booked in a trading system such as Murex, with economics, book and counterparty.",d:["This is usually the main source feed for downstream pipelines.","Lifecycle events arrive as new, amend and cancel messages, so ordering and versioning matter."],q:"If an amendment arrives before its original trade, what does the pipeline do?"},
+  {n:"Enrichment",w:"Trade data is joined with reference data: instrument identifiers, legal entities, classifications and venues.",d:["Missing or duplicate reference records are the most common cause of wrong output and inflated row counts.","Use the reference value effective at the trade date, not today's value."],q:"How do you prove which version of reference data a report used?"},
+  {n:"Confirmation & matching",w:"Both sides agree the trade terms through confirmations or affirmation platforms.",d:["Unmatched or disputed trades create breaks that need tracking until resolved.","Status changes update the trade lifecycle, so the model needs a status history."],q:"How do you model a trade whose status changes several times a day?"},
+  {n:"Clearing & settlement",w:"Where applicable, trades go to a clearing house and cash and securities are exchanged on the settlement date.",d:["Settlement dates depend on product, calendar and currency, so holiday calendars become reference data.","Failed settlements feed back into exceptions and reporting."],q:"What happens to downstream positions if a settlement fails?"},
+  {n:"Regulatory reporting",w:"Required trade details are sent to a regulator or an approved reporting mechanism within deadlines.",d:["Field-level rules differ by regime and product, so keep them as configurable rules, not hard-coded logic.","Track submitted, accepted and rejected states, and store the exact payload sent."],q:"If a submission times out, how do you avoid sending it twice or never sending it?"},
+  {n:"Reconciliation",w:"Source systems, internal stores and reported data are compared to prove completeness and accuracy.",d:["Reconcile counts first, then key fields and totals such as notional.","Every break needs an owner, an age and a resolution status."],q:"What controls prove that every reportable trade was actually reported?"}
+  ];
+  var sec=document.createElement("section");sec.id="capital-markets";
+  sec.innerHTML='<div class="container"><div class="section-heading"><div><div class="section-kicker">Domain track</div><h2>Capital markets &amp; regulatory data</h2><p class="section-description">Follow a trade from order to reconciliation and see what each stage means for a data engineer. Select a stage to explore it.</p></div></div><div class="cm-shell"><div class="cm-flow"></div><div class="cm-detail" aria-live="polite"></div></div><div class="cm-regs"><article class="cm-reg"><b>MiFID II / MiFIR</b><h3>Transaction reporting (EU/UK-style)</h3><p>Reports of executed transactions are usually sent through approved reporting mechanisms. Data quality, identifiers and timeliness are the main engineering concerns.</p></article><article class="cm-reg"><b>CFTC</b><h3>Swap data reporting (US)</h3><p>Derivatives reporting covers trade and lifecycle events with required data elements. Lifecycle accuracy and reconciliation are central.</p></article><article class="cm-reg"><b>BCBS 239</b><h3>Risk data aggregation principles</h3><p>Principles for accurate, complete, timely and adaptable risk data: lineage, controls and governance matter as much as the pipeline itself.</p></article></div><div class="cm-note"><strong style="color:#fff">Note:</strong> this is a learning overview, not regulatory advice. Rules, fields and deadlines change by jurisdiction and over time, so always work from the current official rulebook and your organisation\'s compliance team.</div></div>';
+  projects.parentNode.insertBefore(sec,projects);
+  var flow=sec.querySelector(".cm-flow"),det=sec.querySelector(".cm-detail");
+  function show(i){
+    var s=S[i];
+    det.innerHTML='<h3></h3><p class="cm-w"></p><h4>Data engineering concerns</h4><ul></ul><h4>Interview question</h4><p class="cm-q"></p>';
+    det.querySelector("h3").textContent=(i+1)+". "+s.n;
+    det.querySelector(".cm-w").textContent=s.w;
+    s.d.forEach(function(t){var li=document.createElement("li");li.textContent=t;det.querySelector("ul").appendChild(li)});
+    det.querySelector(".cm-q").textContent=s.q;
+    Array.prototype.forEach.call(flow.children,function(b,j){b.classList.toggle("on",i===j)});
+  }
+  S.forEach(function(s,i){
+    var b=document.createElement("button");b.type="button";b.className="cm-step";
+    b.innerHTML="<span>"+String(i+1).padStart(2,"0")+"</span>";
+    b.appendChild(document.createTextNode(s.n));
+    b.onclick=function(){show(i)};flow.appendChild(b);
+  });
+  show(0);
+  var menu=document.querySelector(".nav-menu");
+  if(menu){var a=document.createElement("a");a.href="#capital-markets";a.textContent="Capital Markets Track";menu.appendChild(a)}
+})();
+</script>
+<!-- ===== END CAPITAL MARKETS TRACK ===== -->
 </body>
 </html>
