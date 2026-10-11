@@ -1502,6 +1502,362 @@
     padding: 18px;
   }
 }
+    
+/* SYSTEM DESIGN INTERVIEW SIMULATOR */
+.sd-simulator {
+  margin-top: 32px;
+}
+
+.sd-intro {
+  max-width: 780px;
+  color: #94A3B8;
+  line-height: 1.8;
+  margin: 10px 0 24px;
+}
+
+.sd-shell {
+  background: #111827;
+  border: 1px solid #263244;
+  border-radius: 18px;
+  padding: 24px;
+}
+
+.sd-scenarios {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.sd-scenario-btn {
+  text-align: left;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #334155;
+  background: #0B1220;
+  color: #F1F5F9;
+  cursor: pointer;
+  line-height: 1.6;
+  font: inherit;
+}
+
+.sd-scenario-btn strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.sd-scenario-btn span {
+  display: block;
+  color: #94A3B8;
+  font-size: 12px;
+}
+
+.sd-scenario-btn:hover,
+.sd-scenario-btn.active {
+  border-color: #3B82F6;
+  background: #13213A;
+}
+
+.sd-scenario-btn.active {
+  box-shadow: inset 0 0 0 1px #3B82F6;
+}
+
+.sd-brief {
+  border: 1px solid #263244;
+  background: #0B1220;
+  border-radius: 12px;
+  padding: 18px;
+  margin-bottom: 22px;
+}
+
+.sd-kicker {
+  color: #60A5FA;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.sd-brief h3 {
+  color: #F1F5F9;
+  margin: 8px 0;
+  font-size: 20px;
+}
+
+.sd-brief p {
+  color: #CBD5E1;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.sd-progress-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  color: #94A3B8;
+  font-size: 13px;
+  margin: 18px 0 8px;
+}
+
+.sd-progress-track {
+  height: 6px;
+  background: #263244;
+  border-radius: 99px;
+  overflow: hidden;
+  margin-bottom: 22px;
+}
+
+.sd-progress-fill {
+  height: 100%;
+  width: 0;
+  background: #3B82F6;
+  transition: width 0.2s ease;
+}
+
+.sd-question-card {
+  border: 1px solid #263244;
+  border-radius: 14px;
+  padding: 22px;
+  background: #0D1524;
+}
+
+.sd-step-label {
+  color: #93C5FD;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.7px;
+  text-transform: uppercase;
+}
+
+.sd-question-card h3 {
+  color: #F1F5F9;
+  font-size: 21px;
+  line-height: 1.5;
+  margin: 10px 0;
+}
+
+.sd-prompt {
+  color: #CBD5E1;
+  line-height: 1.8;
+  margin: 0 0 18px;
+}
+
+.sd-thinking {
+  color: #94A3B8;
+  border-left: 3px solid #475569;
+  padding-left: 12px;
+  line-height: 1.7;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+.sd-answer {
+  display: none;
+  margin-top: 20px;
+  border-top: 1px solid #263244;
+  padding-top: 18px;
+  color: #CBD5E1;
+  line-height: 1.85;
+  font-size: 14px;
+}
+
+.sd-answer.visible {
+  display: block;
+}
+
+.sd-answer h4 {
+  color: #F1F5F9;
+  margin: 16px 0 6px;
+  font-size: 15px;
+}
+
+.sd-answer ul {
+  padding-left: 20px;
+}
+
+.sd-answer li {
+  margin-bottom: 8px;
+}
+
+.sd-answer .sd-example {
+  background: #111827;
+  border: 1px solid #263244;
+  border-radius: 10px;
+  padding: 14px;
+  margin-top: 14px;
+}
+
+.sd-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.sd-action {
+  border: 1px solid #334155;
+  border-radius: 9px;
+  padding: 11px 16px;
+  background: #111827;
+  color: #F1F5F9;
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.sd-action.primary {
+  background: #2563EB;
+  border-color: #2563EB;
+  color: #FFFFFF;
+}
+
+.sd-action:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.sd-action:focus-visible,
+.sd-scenario-btn:focus-visible {
+  outline: 2px solid #93C5FD;
+  outline-offset: 3px;
+}
+
+.sd-status {
+  min-height: 24px;
+  color: #93C5FD;
+  font-size: 13px;
+  margin-top: 14px;
+  line-height: 1.6;
+}
+
+.sd-complete {
+  display: none;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 20px;
+  color: #CBD5E1;
+  line-height: 1.8;
+}
+
+.sd-complete.visible {
+  display: block;
+}
+
+.sd-complete h3 {
+  color: #F1F5F9;
+}
+
+@media (max-width: 760px) {
+  .sd-scenarios {
+    grid-template-columns: 1fr;
+  }
+
+  .sd-shell {
+    padding: 14px;
+  }
+
+  .sd-question-card {
+    padding: 16px;
+  }
+
+  .sd-actions {
+    flex-direction: column;
+  }
+
+  .sd-action {
+    width: 100%;
+  }
+}
+    
+/* ===== RESPONSIVE HEADER LAYOUT FIX ===== */
+
+/* Keep branding on its own row */
+.site-header .nav {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  gap: 12px;
+  padding-top: 14px;
+  padding-bottom: 12px;
+}
+
+/* Keep the logo and brand text together */
+.site-header .brand {
+  align-self: flex-start;
+  flex-shrink: 0;
+}
+
+/* Allow navigation links to wrap cleanly */
+.site-header .nav-links {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px 10px;
+  width: 100%;
+  min-width: 0;
+}
+
+/* Consistent clickable navigation links */
+.site-header .nav-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  max-width: 100%;
+  padding: 8px 12px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  font-size: 14px;
+  line-height: 1.5;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  transition: background-color 0.2s ease,
+              border-color 0.2s ease,
+              color 0.2s ease;
+}
+
+/* Clear hover feedback */
+.site-header .nav-links a:hover {
+  background: #111827;
+  border-color: #263244;
+  color: #93C5FD;
+}
+
+/* Keep the About link visually distinct */
+.site-header .nav-links a.nav-cta {
+  border-color: #263244;
+  background: transparent;
+}
+
+/* Smaller screens */
+@media (max-width: 600px) {
+  .site-header .nav {
+    gap: 10px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  .site-header .brand {
+    white-space: normal;
+  }
+
+  .site-header .nav-links {
+    gap: 5px 6px;
+  }
+
+  .site-header .nav-links a {
+    padding: 7px 9px;
+    font-size: 12px;
+  }
+}
+
+/* ===== END RESPONSIVE HEADER LAYOUT FIX ===== */
   </style>
 </head>
 
@@ -1522,6 +1878,7 @@
         <a href="#quiz">Interview Quiz</a>
         <a href="#bug-lab">Find the Bug</a>
         <a href="#architecture-library">Architecture Library</a>
+        <a href="#system-design">System Design Simulator</a>
         <a href="#roadmap">Roadmap</a>
         <a href="#projects">Projects</a>
         <a href="#interviews">Interview Prep</a>
@@ -2088,6 +2445,112 @@
         </details>
       </article>
 
+    </div>
+  </div>
+</section>
+    
+<section id="system-design" class="alternate">
+  <div class="container sd-simulator">
+    <h2>System Design Interview Simulator</h2>
+
+    <p class="sd-intro">
+      Practise designing real data platforms step by step. Attempt each question
+      before revealing the model answer. Focus on the reasoning behind your
+      decisions, not just the names of technologies.
+    </p>
+
+    <div class="sd-shell">
+      <div class="sd-scenarios" aria-label="Choose a system design scenario">
+        <button type="button" class="sd-scenario-btn active"
+          data-sd-scenario="market" aria-pressed="true">
+          <strong>01 · Real-Time Market Data</strong>
+          <span>Streaming · Kafka · Low latency</span>
+        </button>
+
+        <button type="button" class="sd-scenario-btn"
+          data-sd-scenario="regulatory" aria-pressed="false">
+          <strong>02 · Regulatory Reporting</strong>
+          <span>Trade lifecycle · Enrichment · Auditability</span>
+        </button>
+
+        <button type="button" class="sd-scenario-btn"
+          data-sd-scenario="batch" aria-pressed="false">
+          <strong>03 · Large-Scale Batch Platform</strong>
+          <span>Scale · Spark · Recovery</span>
+        </button>
+      </div>
+
+      <div class="sd-brief">
+        <div class="sd-kicker">Your interview scenario</div>
+        <h3 id="sd-scenario-title">Real-Time Market Data Platform</h3>
+        <p id="sd-scenario-brief">
+          Design a platform that receives price updates from 28 stock exchanges
+          and makes current prices available to downstream applications.
+        </p>
+      </div>
+
+      <div class="sd-progress-row">
+        <span id="sd-step-count">Question 1 of 5</span>
+        <span id="sd-progress-text">0 of 5 completed</span>
+      </div>
+
+      <div class="sd-progress-track"
+        role="progressbar"
+        aria-label="Scenario completion"
+        aria-valuemin="0"
+        aria-valuemax="5"
+        aria-valuenow="0"
+        id="sd-progress-bar">
+        <div class="sd-progress-fill" id="sd-progress-fill"></div>
+      </div>
+
+      <div class="sd-question-card" id="sd-question-card">
+        <div class="sd-step-label" id="sd-step-label">Stage 1 · Requirements</div>
+
+        <h3 id="sd-question">What requirements would you clarify before designing the system?</h3>
+
+        <p class="sd-prompt" id="sd-prompt">
+          Start by clarifying what the system must deliver, how quickly it must
+          deliver it, and what correctness means for the business.
+        </p>
+
+        <div class="sd-thinking">
+          Interview tip: take a moment to answer aloud before revealing the
+          suggested approach. Explain why each design decision matters.
+        </div>
+
+        <button type="button" class="sd-action primary" id="sd-reveal">
+          Reveal model answer
+        </button>
+
+        <div class="sd-answer" id="sd-answer" aria-live="polite"></div>
+
+        <div class="sd-actions">
+          <button type="button" class="sd-action" id="sd-previous" disabled>
+            ← Previous
+          </button>
+          <button type="button" class="sd-action primary" id="sd-complete-step" disabled>
+            Mark understood & continue →
+          </button>
+          <button type="button" class="sd-action" id="sd-reset">
+            Restart scenario
+          </button>
+        </div>
+
+        <div class="sd-status" id="sd-status" role="status" aria-live="polite"></div>
+      </div>
+
+      <div class="sd-complete" id="sd-completion" aria-live="polite">
+        <h3>Scenario completed</h3>
+        <p>
+          You have marked all five stages as understood. Practise explaining
+          the architecture without reading the model answers, then revisit any
+          stage where you need more confidence.
+        </p>
+        <button type="button" class="sd-action primary" id="sd-again">
+          Practise this scenario again
+        </button>
+      </div>
     </div>
   </div>
 </section>
@@ -3438,6 +3901,451 @@
   });
 
   renderScenario();
+})();
+</script>
+  
+<script>
+(function () {
+  const scenarios = {
+    market: {
+      title: "Real-Time Market Data Platform",
+      brief: "Design a platform that receives price updates from 28 stock exchanges and makes current prices available to downstream applications.",
+      stages: [
+        {
+          label: "Stage 1 · Requirements",
+          question: "What requirements would you clarify before designing the system?",
+          prompt: "Clarify the business needs before choosing Kafka, databases, or compute services.",
+          answer: `
+            <h4>1. Functional requirements</h4>
+            <ul>
+              <li>Receive price updates from all 28 exchanges.</li>
+              <li>Validate instrument identifiers, exchange codes, timestamps, bid and ask values.</li>
+              <li>Publish current prices to consuming applications and retain historical data where required.</li>
+            </ul>
+            <h4>2. Non-functional requirements</h4>
+            <ul>
+              <li>Agree on expected throughput, peak bursts, latency targets, availability and recovery objectives.</li>
+              <li>Define ordering requirements, duplicate handling, data retention, security and audit needs.</li>
+            </ul>
+            <div class="sd-example"><strong>Interview point:</strong> Do not invent a latency SLA. Ask the interviewer for one or state an explicit assumption, then explain how you would validate it through load testing.</div>
+          `
+        },
+        {
+          label: "Stage 2 · Ingestion",
+          question: "How would you ingest price events reliably from 28 exchanges?",
+          prompt: "Explain how data reaches the platform and what happens during feed interruptions or traffic spikes.",
+          answer: `
+            <h4>Proposed flow</h4>
+            <ul>
+              <li>Use feed adapters to normalize exchange-specific messages into a documented event schema.</li>
+              <li>Publish events to Kafka topics, using a deliberate partition key such as instrument ID or instrument plus exchange.</li>
+              <li>Include event ID, source, exchange, instrument ID, event timestamp and sequence number where available.</li>
+              <li>Configure replication, retention, producer acknowledgements and error handling to meet the agreed reliability requirements.</li>
+            </ul>
+            <h4>Failure handling</h4>
+            <ul>
+              <li>Monitor feed heartbeats and sequence gaps; trigger alerts when messages appear to be missing.</li>
+              <li>Buffer safely during downstream slowdowns and replay from retained offsets or source data when possible.</li>
+              <li>Send malformed messages to a controlled quarantine path rather than silently dropping them.</li>
+            </ul>
+            <div class="sd-example"><strong>Trade-off:</strong> A partition key affects both parallelism and ordering. A single partition can become a bottleneck, while spreading one instrument across partitions can complicate ordering.</div>
+          `
+        },
+        {
+          label: "Stage 3 · Processing & Storage",
+          question: "How would you process events and serve the latest price efficiently?",
+          prompt: "Separate the needs of a low-latency application from the needs of historical analysis.",
+          answer: `
+            <h4>Processing design</h4>
+            <ul>
+              <li>Validate schema and business rules, normalize precision and timestamps, and detect duplicate or stale events.</li>
+              <li>Use a stream processor or well-designed Kafka consumers when stateful processing is required.</li>
+              <li>Apply ordering rules using exchange sequence numbers or event timestamps, according to the source contract.</li>
+            </ul>
+            <h4>Storage design</h4>
+            <ul>
+              <li>Use Redis or a similar low-latency key-value store to serve the latest valid price when that access pattern fits.</li>
+              <li>Use Oracle or another durable analytical/historical store for persistence and downstream queries, depending on workload needs.</li>
+              <li>Define how the latest-price cache is rebuilt after data loss or service restart.</li>
+            </ul>
+            <div class="sd-example"><strong>Interview point:</strong> A cache is not automatically the source of truth. Explain which system owns durable history and how cache values are refreshed consistently.</div>
+          `
+        },
+        {
+          label: "Stage 4 · Scale & Reliability",
+          question: "What would you do if event volume suddenly increased tenfold?",
+          prompt: "Explain how you would identify the bottleneck before scaling everything.",
+          answer: `
+            <h4>Investigation</h4>
+            <ul>
+              <li>Measure events per second, consumer lag, processing latency, CPU, memory, network throughput and storage write latency.</li>
+              <li>Check for hot Kafka partitions, uneven instrument distribution, slow downstream writes and expensive transformations.</li>
+            </ul>
+            <h4>Scaling approach</h4>
+            <ul>
+              <li>Increase partitions only after checking ordering requirements and downstream consumer capacity.</li>
+              <li>Scale consumer instances within the limits imposed by topic partitions and state management.</li>
+              <li>Batch downstream writes where appropriate and apply backpressure instead of allowing unbounded memory growth.</li>
+              <li>Test recovery time after a consumer outage and verify that replay does not create incorrect price state.</li>
+            </ul>
+            <div class="sd-example"><strong>Senior-level answer:</strong> Scaling is not only adding machines. Identify the constrained resource, quantify the bottleneck, make a targeted change and verify it with repeatable load tests.</div>
+          `
+        },
+        {
+          label: "Stage 5 · Quality & Operations",
+          question: "How would you detect and recover from incorrect or missing market data?",
+          prompt: "Cover monitoring, reconciliation, business correctness and operational recovery.",
+          answer: `
+            <h4>Controls</h4>
+            <ul>
+              <li>Monitor feed freshness, sequence gaps, duplicate rates, invalid values, consumer lag and end-to-end latency.</li>
+              <li>Validate bid/ask rules and other instrument-specific business checks without assuming every instrument follows identical rules.</li>
+              <li>Reconcile received events against source sequence numbers or exchange-provided controls where available.</li>
+              <li>Maintain traceable event IDs and processing metadata so an issue can be investigated.</li>
+            </ul>
+            <h4>Recovery</h4>
+            <ul>
+              <li>Replay from a known offset or reload source data when supported.</li>
+              <li>Make updates idempotent and prevent an older replayed event from overwriting a newer valid price.</li>
+              <li>Alert operations teams, record remediation, and verify recovery against source controls.</li>
+            </ul>
+            <div class="sd-example"><strong>Success criteria:</strong> Correctness, freshness, recovery time and traceability should all be measured—not just whether the pipeline job shows green.</div>
+          `
+        }
+      ]
+    },
+
+    regulatory: {
+      title: "Regulatory Trade Reporting Platform",
+      brief: "Design a controlled pipeline that processes trade lifecycle events, enriches them with reference data, and submits accurate reports to a regulator or reporting mechanism.",
+      stages: [
+        {
+          label: "Stage 1 · Requirements",
+          question: "What would you clarify before designing the reporting platform?",
+          prompt: "Regulatory data systems need explicit reporting rules, traceability and operational controls.",
+          answer: `
+            <h4>Clarify the reporting contract</h4>
+            <ul>
+              <li>Identify jurisdictions, reportable products, event types, deadlines, required fields and validation rules.</li>
+              <li>Define how new trades, amendments, cancellations and corrections should be represented.</li>
+              <li>Confirm expected volume, peak load, resubmission rules, retention requirements and audit expectations.</li>
+              <li>Identify authoritative trade sources and approved reference-data sources.</li>
+            </ul>
+            <div class="sd-example"><strong>Interview point:</strong> Regulatory rules vary by jurisdiction and reporting regime. Confirm the applicable rulebook instead of assuming one universal reporting flow.</div>
+          `
+        },
+        {
+          label: "Stage 2 · Ingestion & Lifecycle",
+          question: "How would you ingest trades and handle amendments or cancellations?",
+          prompt: "Explain how the pipeline determines which business event has occurred and prevents duplicate processing.",
+          answer: `
+            <h4>Design approach</h4>
+            <ul>
+              <li>Ingest trade events with stable trade identifiers, source event IDs, event types, event timestamps and ingestion metadata.</li>
+              <li>Normalize source formats and preserve the original payload for audit and replay where permitted.</li>
+              <li>Use lifecycle logic to link new, amended, cancelled and corrected events to the appropriate prior transaction.</li>
+              <li>Detect replayed messages and duplicate deliveries using event identifiers and business rules.</li>
+            </ul>
+            <h4>Important distinction</h4>
+            <ul>
+              <li>Technical duplicates and legitimate repeated business events are not the same thing.</li>
+              <li>Use explicit lifecycle and source-ordering rules rather than simply deleting every row with a repeated trade ID.</li>
+            </ul>
+            <div class="sd-example"><strong>Interview point:</strong> Preserve enough event history to explain what changed, when it changed, and why a report was generated or corrected.</div>
+          `
+        },
+        {
+          label: "Stage 3 · Enrichment & Data Model",
+          question: "How would you enrich trades with instrument and legal-entity reference data?",
+          prompt: "Think about missing reference records, effective dates, data lineage and deterministic output.",
+          answer: `
+            <h4>Enrichment design</h4>
+            <ul>
+              <li>Join trades to governed reference datasets using appropriate business keys, effective dates and jurisdictional rules.</li>
+              <li>Validate uniqueness of reference keys before joining; duplicate reference records can multiply trade rows.</li>
+              <li>Capture the reference-data version or effective record used to produce each report.</li>
+              <li>Quarantine records with missing or ambiguous mandatory attributes and assign a clear failure reason.</li>
+            </ul>
+            <h4>Data quality controls</h4>
+            <ul>
+              <li>Validate required fields, legal entity mappings, instrument identifiers and permitted values.</li>
+              <li>Reconcile row counts and relevant totals before and after enrichment.</li>
+              <li>Reprocess quarantined records when corrected reference data becomes available.</li>
+            </ul>
+            <div class="sd-example"><strong>Interview point:</strong> Do not silently substitute today's reference data for historical values if the reporting rules require the value effective at the time of the trade or event.</div>
+          `
+        },
+        {
+          label: "Stage 4 · Submission & Recovery",
+          question: "How would you ensure reports are not lost or submitted twice after a failure?",
+          prompt: "Design the process around explicit states, durable records and safe retries.",
+          answer: `
+            <h4>Submission workflow</h4>
+            <ul>
+              <li>Persist a report record with a stable reporting key, version, payload reference, status and timestamps.</li>
+              <li>Track states such as ready, submitted, acknowledged, rejected and pending investigation, according to the external protocol.</li>
+              <li>Store outbound payloads and acknowledgement details with controlled access and audit history.</li>
+              <li>Use idempotency keys or external report identifiers where the reporting endpoint supports them.</li>
+            </ul>
+            <h4>Recovery controls</h4>
+            <ul>
+              <li>Distinguish a confirmed rejection from a timeout where submission may have succeeded.</li>
+              <li>Check submission status before retrying an uncertain request, when the external protocol permits it.</li>
+              <li>Reconcile sent reports against acknowledgements and escalate unresolved cases.</li>
+            </ul>
+            <div class="sd-example"><strong>Key principle:</strong> A local retry alone cannot guarantee exactly-once delivery to an external system. The design must account for the external acknowledgement and deduplication contract.</div>
+          `
+        },
+        {
+          label: "Stage 5 · Audit & Monitoring",
+          question: "How would you demonstrate that a report was accurate and traceable?",
+          prompt: "Explain the evidence you would retain and the operational measures you would monitor.",
+          answer: `
+            <h4>Auditability</h4>
+            <ul>
+              <li>Trace each report to its source event, lifecycle decision, enrichment inputs, transformation version and outbound payload.</li>
+              <li>Record validation outcomes, approvals where required, submission timestamps and acknowledgement responses.</li>
+              <li>Apply access controls, retention policies and appropriate protection for sensitive data.</li>
+            </ul>
+            <h4>Operational monitoring</h4>
+            <ul>
+              <li>Monitor reporting deadlines, rejected records, missing acknowledgements, data-quality failures and unresolved exceptions.</li>
+              <li>Reconcile source events to eligible reports and track exceptions to resolution.</li>
+              <li>Use alerts and dashboards that identify the affected business date, source and processing stage.</li>
+            </ul>
+            <div class="sd-example"><strong>Strong interview answer:</strong> The system should explain not only what was submitted, but which data and rules produced it, what the receiver returned, and how any correction was handled.</div>
+          `
+        }
+      ]
+    },
+
+    batch: {
+      title: "Large-Scale Batch Data Platform",
+      brief: "Design a platform that processes billions of records using incremental ingestion, distributed transformations, data-quality controls and reliable recovery.",
+      stages: [
+        {
+          label: "Stage 1 · Requirements",
+          question: "How would you establish the design requirements for a very large batch workload?",
+          prompt: "A record count alone is not enough to estimate compute, storage or completion time.",
+          answer: `
+            <h4>Clarify the workload</h4>
+            <ul>
+              <li>Determine daily input size, average record size, growth rate, peak load and schema complexity.</li>
+              <li>Ask about completion deadlines, data freshness, retention, concurrency and downstream consumers.</li>
+              <li>Clarify full-load versus incremental processing, late-arriving data and correction handling.</li>
+              <li>Define acceptable recovery time, data-loss tolerance, quality thresholds and cost constraints.</li>
+            </ul>
+            <div class="sd-example"><strong>Interview point:</strong> Estimate based on bytes processed, transformation complexity, shuffle volume and target write throughput—not just the number of rows.</div>
+          `
+        },
+        {
+          label: "Stage 2 · Ingestion & Storage",
+          question: "How would you ingest large datasets without repeatedly reprocessing everything?",
+          prompt: "Explain incremental loading, file layout, schema evolution and how you know what has been processed.",
+          answer: `
+            <h4>Ingestion strategy</h4>
+            <ul>
+              <li>Use CDC, source timestamps or reliable watermarks where the source contract supports them.</li>
+              <li>Track the input range and processing status for each run.</li>
+              <li>Store raw data in durable object storage and use columnar formats such as Parquet for suitable analytical workloads.</li>
+              <li>Choose partition columns based on common filters and data distribution, not automatically on every available column.</li>
+            </ul>
+            <h4>Important controls</h4>
+            <ul>
+              <li>Handle late updates and deletes explicitly; a simple timestamp filter may miss them if the source does not provide reliable change tracking.</li>
+              <li>Manage schema evolution and quarantine incompatible records.</li>
+              <li>Avoid creating huge numbers of tiny files, which increase metadata and query overhead.</li>
+            </ul>
+            <div class="sd-example"><strong>Interview point:</strong> Persist the watermark only after the corresponding data is safely processed and its completion state is known.</div>
+          `
+        },
+        {
+          label: "Stage 3 · Distributed Processing",
+          question: "How would you optimize a Spark job that is taking too long?",
+          prompt: "Explain how you would diagnose the execution plan before changing cluster settings.",
+          answer: `
+            <h4>Diagnose first</h4>
+            <ul>
+              <li>Inspect Spark UI stages, task duration, shuffle read/write, spills, skewed partitions and executor failures.</li>
+              <li>Review the query plan, join strategy, input sizes and the number and size of partitions.</li>
+              <li>Check whether filters and column selection reduce data early in the pipeline.</li>
+            </ul>
+            <h4>Optimization options</h4>
+            <ul>
+              <li>Use broadcast joins only when the smaller dataset fits safely in the available executor memory.</li>
+              <li>Address skew with suitable techniques such as key salting or adaptive query execution when justified.</li>
+              <li>Choose partitioning and file sizes based on measured workload behavior.</li>
+              <li>Avoid unnecessary wide transformations, repeated scans and indiscriminate caching.</li>
+            </ul>
+            <div class="sd-example"><strong>Interview point:</strong> Explain the evidence, the change you would test, and how you would compare runtime, resource usage and output correctness before and after.</div>
+          `
+        },
+        {
+          label: "Stage 4 · Reliability & Idempotency",
+          question: "How would you recover if a pipeline fails after partially writing its output?",
+          prompt: "Consider checkpoints, run state, concurrent runs and duplicate prevention.",
+          answer: `
+            <h4>Recovery design</h4>
+            <ul>
+              <li>Assign each run a unique ID and record its input range, status and output location.</li>
+              <li>Write to a staging or transactional target where possible, then publish only after validation succeeds.</li>
+              <li>Use merge/upsert logic with stable keys when the target supports it, and define how deletes and corrections work.</li>
+              <li>Make retries safe and ensure a repeated run does not append duplicate logical records.</li>
+            </ul>
+            <h4>Additional safeguards</h4>
+            <ul>
+              <li>Prevent overlapping runs from processing the same range unsafely.</li>
+              <li>Advance watermarks only after successful completion of the relevant processing boundary.</li>
+              <li>Reconcile output counts and business totals before marking the pipeline complete.</li>
+            </ul>
+            <div class="sd-example"><strong>Key principle:</strong> A checkpoint tells you where to resume; it does not by itself guarantee correct output. Write semantics and recovery behavior matter too.</div>
+          `
+        },
+        {
+          label: "Stage 5 · Data Quality & Cost",
+          question: "How would you prove the batch output is correct while controlling cost?",
+          prompt: "Combine quality checks, observability, performance metrics and business reconciliation.",
+          answer: `
+            <h4>Correctness</h4>
+            <ul>
+              <li>Validate schema, null constraints, uniqueness, referential integrity and business-specific rules.</li>
+              <li>Reconcile input, accepted and rejected record counts; compare financial or domain totals where appropriate.</li>
+              <li>Track data freshness and late-arriving records as well as job success.</li>
+              <li>Store quality results by run and dataset so changes can be investigated.</li>
+            </ul>
+            <h4>Cost and operations</h4>
+            <ul>
+              <li>Measure compute utilization, shuffle volume, storage growth, runtime and cost per workload.</li>
+              <li>Use incremental processing, right-sized compute and workload-specific scheduling.</li>
+              <li>Set alerts for SLA breaches, abnormal data volumes and repeated failures.</li>
+            </ul>
+            <div class="sd-example"><strong>Senior-level answer:</strong> Optimize for reliable delivery of correct data within the required SLA and cost envelope—not simply the fastest successful Spark run.</div>
+          `
+        }
+      ]
+    }
+  };
+
+  const root = document.getElementById("system-design");
+  if (!root || root.dataset.sdInitialized === "true") return;
+  root.dataset.sdInitialized = "true";
+
+  const $ = id => document.getElementById(id);
+  const scenarioButtons = Array.from(
+    root.querySelectorAll("[data-sd-scenario]")
+  );
+
+  let scenarioKey = "market";
+  let stageIndex = 0;
+  let revealed = false;
+  let completed = [];
+
+  function render() {
+    const scenario = scenarios[scenarioKey];
+    const stage = scenario.stages[stageIndex];
+    const total = scenario.stages.length;
+
+    $("sd-scenario-title").textContent = scenario.title;
+    $("sd-scenario-brief").textContent = scenario.brief;
+    $("sd-step-count").textContent = "Question " + (stageIndex + 1) + " of " + total;
+    $("sd-progress-text").textContent = completed.length + " of " + total + " completed";
+    $("sd-progress-fill").style.width = (completed.length / total * 100) + "%";
+    $("sd-progress-bar").setAttribute("aria-valuenow", completed.length);
+
+    $("sd-step-label").textContent = stage.label;
+    $("sd-question").textContent = stage.question;
+    $("sd-prompt").textContent = stage.prompt;
+
+    $("sd-answer").innerHTML = stage.answer;
+    $("sd-answer").classList.toggle("visible", revealed);
+    $("sd-reveal").textContent = revealed ? "Hide model answer" : "Reveal model answer";
+
+    $("sd-previous").disabled = stageIndex === 0;
+    $("sd-complete-step").disabled = !revealed;
+    $("sd-complete-step").textContent =
+      stageIndex === total - 1
+        ? "Mark understood & finish"
+        : completed.includes(stageIndex)
+          ? "Stage completed ✓"
+          : "Mark understood & continue →";
+
+    $("sd-completion").classList.remove("visible");
+    $("sd-question-card").style.display = "block";
+
+    $("sd-status").textContent = completed.includes(stageIndex)
+      ? "You have marked this stage as understood. You can review it or move to another stage."
+      : "Try answering aloud before revealing the model answer.";
+
+    scenarioButtons.forEach(button => {
+      const active = button.dataset.sdScenario === scenarioKey;
+      button.classList.toggle("active", active);
+      button.setAttribute("aria-pressed", String(active));
+    });
+  }
+
+  function selectScenario(key) {
+    if (!scenarios[key]) return;
+    scenarioKey = key;
+    stageIndex = 0;
+    revealed = false;
+    completed = [];
+    render();
+  }
+
+  scenarioButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      selectScenario(button.dataset.sdScenario);
+    });
+  });
+
+  $("sd-reveal").addEventListener("click", () => {
+    revealed = !revealed;
+    render();
+  });
+
+  $("sd-previous").addEventListener("click", () => {
+    if (stageIndex > 0) {
+      stageIndex--;
+      revealed = false;
+      render();
+    }
+  });
+
+  $("sd-complete-step").addEventListener("click", () => {
+    if (!revealed) return;
+
+    if (!completed.includes(stageIndex)) {
+  completed.push(stageIndex);
+  completed.sort((a, b) => a - b);
+}
+
+    if (stageIndex === scenarios[scenarioKey].stages.length - 1) {
+      $("sd-progress-text").textContent =
+        completed.length + " of " + scenarios[scenarioKey].stages.length + " completed";
+      $("sd-progress-fill").style.width =
+        (completed.length / scenarios[scenarioKey].stages.length * 100) + "%";
+      $("sd-progress-bar").setAttribute("aria-valuenow", completed.length);
+      $("sd-question-card").style.display = "none";
+      $("sd-completion").classList.add("visible");
+      return;
+    }
+
+    stageIndex++;
+    revealed = false;
+    render();
+  });
+
+  function restart() {
+    stageIndex = 0;
+    revealed = false;
+    completed = [];
+    render();
+  }
+
+  $("sd-reset").addEventListener("click", restart);
+  $("sd-again").addEventListener("click", restart);
+
+  render();
 })();
 </script>
 </body>
