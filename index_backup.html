@@ -1858,6 +1858,167 @@
 }
 
 /* ===== END RESPONSIVE HEADER LAYOUT FIX ===== */
+    
+/* ===== SQL & PYSPARK PRACTICE PLAYGROUND ===== */
+.practice-playground {
+  margin-top: 28px;
+}
+
+.practice-panel {
+  background: #111827;
+  border: 1px solid #263244;
+  border-radius: 18px;
+  padding: 24px;
+}
+
+.practice-intro {
+  color: #94A3B8;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.practice-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.practice-select {
+  min-width: 180px;
+  max-width: 100%;
+  padding: 11px 13px;
+  background: #0B1220;
+  border: 1px solid #334155;
+  border-radius: 9px;
+  color: #F1F5F9;
+}
+
+.practice-card {
+  background: #0B1220;
+  border: 1px solid #334155;
+  border-radius: 14px;
+  padding: 22px;
+}
+
+.practice-meta {
+  color: #93C5FD;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.practice-card h3 {
+  color: #F1F5F9;
+  font-size: 21px;
+  margin-bottom: 12px;
+}
+
+.practice-description,
+.practice-explanation {
+  color: #CBD5E1;
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.practice-data {
+  padding: 14px;
+  margin: 14px 0 18px;
+  border: 1px solid #263244;
+  border-radius: 9px;
+  background: #080D18;
+  color: #CBD5E1;
+  font: 13px/1.8 monospace;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  overflow-x: auto;
+}
+
+.practice-solution {
+  display: none;
+  margin-top: 18px;
+}
+
+.practice-solution.visible {
+  display: block;
+}
+
+.practice-solution h4 {
+  color: #93C5FD;
+  margin-bottom: 10px;
+}
+
+.practice-code {
+  padding: 16px;
+  background: #050914;
+  border: 1px solid #263244;
+  border-radius: 10px;
+  color: #BFDBFE;
+  font: 13px/1.8 monospace;
+  white-space: pre;
+  overflow-x: auto;
+  margin-bottom: 14px;
+}
+
+.practice-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.practice-btn {
+  padding: 10px 15px;
+  background: #111827;
+  border: 1px solid #334155;
+  border-radius: 9px;
+  color: #F1F5F9;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.practice-btn.primary {
+  background: #2563EB;
+  border-color: #2563EB;
+  color: #FFFFFF;
+}
+
+.practice-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.practice-status {
+  min-height: 24px;
+  margin-top: 14px;
+  color: #93C5FD;
+  font-size: 13px;
+}
+
+@media (max-width: 600px) {
+  .practice-panel {
+    padding: 14px;
+  }
+
+  .practice-card {
+    padding: 16px;
+  }
+
+  .practice-toolbar,
+  .practice-actions {
+    flex-direction: column;
+  }
+
+  .practice-select,
+  .practice-btn {
+    width: 100%;
+  }
+}
+/* ===== END SQL & PYSPARK PLAYGROUND ===== */
   </style>
 </head>
 
@@ -1879,6 +2040,7 @@
         <a href="#bug-lab">Find the Bug</a>
         <a href="#architecture-library">Architecture Library</a>
         <a href="#system-design">System Design Simulator</a>
+        <a href="#practice-playground">SQL &amp; PySpark Playground</a>
         <a href="#roadmap">Roadmap</a>
         <a href="#projects">Projects</a>
         <a href="#interviews">Interview Prep</a>
@@ -2554,6 +2716,78 @@
     </div>
   </div>
 </section>
+    
+<!-- SQL & PYSPARK PRACTICE PLAYGROUND -->
+<section id="practice-playground" class="alternate">
+  <div class="container practice-playground">
+    <div class="section-heading">
+      <div>
+        <div class="section-kicker">Hands-on interview practice</div>
+        <h2>SQL &amp; PySpark Playground</h2>
+        <p class="section-description">
+          Practise SQL and PySpark interview problems with sample data,
+          solutions, and explanations.
+        </p>
+      </div>
+    </div>
+
+    <div class="practice-panel">
+      <p class="practice-intro">
+        First understand the problem and try to solve it yourself.
+        Then reveal the sample solution and explain why it works.
+        The code is for learning and must be adapted and tested in your
+        own SQL or PySpark environment.
+      </p>
+
+      <div class="practice-toolbar">
+        <label>
+          <span class="practice-meta">Choose practice mode</span><br>
+          <select id="practice-mode" class="practice-select">
+            <option value="SQL">SQL</option>
+            <option value="PySpark">PySpark</option>
+          </select>
+        </label>
+      </div>
+
+      <article class="practice-card">
+        <div class="practice-meta" id="practice-counter">
+          SQL · Question 1
+        </div>
+        <h3 id="practice-question">Loading question...</h3>
+        <p class="practice-description" id="practice-description"></p>
+
+        <h4>Sample data</h4>
+        <pre class="practice-data" id="practice-data"></pre>
+
+        <div class="practice-solution" id="practice-solution">
+          <h4>Sample solution</h4>
+          <pre class="practice-code" id="practice-code"></pre>
+          <p class="practice-explanation" id="practice-explanation"></p>
+        </div>
+
+        <div class="practice-actions">
+          <button class="practice-btn primary" id="practice-reveal" type="button">
+            Reveal solution
+          </button>
+          <button class="practice-btn" id="practice-copy" type="button" disabled>
+            Copy code
+          </button>
+          <button class="practice-btn" id="practice-previous" type="button">
+            ← Previous
+          </button>
+          <button class="practice-btn" id="practice-next" type="button">
+            Next question →
+          </button>
+        </div>
+
+        <p class="practice-status" id="practice-status" role="status" aria-live="polite">
+          Try solving the problem before revealing the answer.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+<!-- END SQL & PYSPARK PRACTICE PLAYGROUND -->
     <section id="projects">
       <div class="container">
         <div class="section-heading">
@@ -4348,5 +4582,160 @@
   render();
 })();
 </script>
+  
+<!-- SQL & PYSPARK PLAYGROUND SCRIPT -->
+<script>
+(function () {
+  const questions = {
+    SQL: [
+      {
+        title: "Find the latest trade for each instrument",
+        description: "Return one latest trade per instrument. If two trades have the same timestamp, use the larger trade_id as the tie-breaker.",
+        data: "trades\ntrade_id | instrument | trade_time          | price\n101      | AAPL       | 2026-10-10 10:00:00  | 220\n102      | MSFT       | 2026-10-10 10:02:00  | 510\n103      | AAPL       | 2026-10-10 10:05:00  | 222\n104      | AAPL       | 2026-10-10 10:05:00  | 223",
+        code: "WITH ranked_trades AS (\n    SELECT\n        trade_id,\n        instrument,\n        trade_time,\n        price,\n        ROW_NUMBER() OVER (\n            PARTITION BY instrument\n            ORDER BY trade_time DESC, trade_id DESC\n        ) AS rn\n    FROM trades\n)\nSELECT trade_id, instrument, trade_time, price\nFROM ranked_trades\nWHERE rn = 1;",
+        explanation: "PARTITION BY creates a separate ranking for each instrument. The descending timestamp puts the latest trade first. trade_id DESC resolves timestamp ties deterministically. ROW_NUMBER returns exactly one row per instrument. In production, confirm the tie-breaker matches the source's business rules."
+      },
+      {
+        title: "Find duplicate source events",
+        description: "Identify source_event_id values appearing more than once. Duplicate events can cause double counting or repeated downstream actions.",
+        data: "market_events\nsource_event_id | instrument | event_type\nE101            | AAPL       | PRICE\nE102            | MSFT       | PRICE\nE101            | AAPL       | PRICE\nE103            | NVDA       | PRICE",
+        code: "SELECT\n    source_event_id,\n    COUNT(*) AS event_count\nFROM market_events\nGROUP BY source_event_id\nHAVING COUNT(*) > 1;",
+        explanation: "GROUP BY groups records by event identity. HAVING filters groups after aggregation. Before deleting duplicates, determine whether the source_event_id is truly unique and whether repeated deliveries are retries or legitimate separate events. In production, preserve audit evidence and deduplicate using the agreed business key."
+      },
+      {
+        title: "Calculate a running total per account",
+        description: "Calculate each account's cumulative transaction amount ordered by transaction time.",
+        data: "transactions\naccount_id | transaction_time | amount\nA1         | 09:00            | 100\nA1         | 10:00            | 50\nA1         | 11:00            | -20\nB1         | 09:30            | 200",
+        code: "SELECT\n    account_id,\n    transaction_time,\n    amount,\n    SUM(amount) OVER (\n        PARTITION BY account_id\n        ORDER BY transaction_time\n        ROWS BETWEEN UNBOUNDED PRECEDING\n                 AND CURRENT ROW\n    ) AS running_total\nFROM transactions;",
+        explanation: "The window function calculates a cumulative sum without collapsing the individual transaction rows. PARTITION BY resets the total for each account. The explicit ROWS frame defines a row-by-row running total. Add a unique tie-breaker to ORDER BY if transaction timestamps can repeat."
+      },
+      {
+        title: "Find records missing from the target",
+        description: "Find source trade IDs that have not been loaded into the target table.",
+        data: "source_trades: 101, 102, 103, 104\ntarget_trades: 101, 103\nExpected missing IDs: 102, 104",
+        code: "SELECT s.trade_id\nFROM source_trades s\nWHERE NOT EXISTS (\n    SELECT 1\n    FROM target_trades t\n    WHERE t.trade_id = s.trade_id\n);",
+        explanation: "NOT EXISTS returns source records with no matching target key. It avoids the NULL-related behavior that can make NOT IN surprising. Use a stable key and check whether soft deletes, rejected records, or delayed loads explain the difference before treating it as a defect."
+      }
+    ],
+    PySpark: [
+      {
+        title: "Keep the latest trade per instrument",
+        description: "Use a window to keep one latest trade per instrument. Resolve ties with trade_id.",
+        data: "Columns: trade_id, instrument, trade_time, price\nExample rows:\n101, AAPL, 10:00, 220\n102, MSFT, 10:02, 510\n103, AAPL, 10:05, 222\n104, AAPL, 10:05, 223",
+        code: "from pyspark.sql import functions as F\nfrom pyspark.sql.window import Window\n\nwindow_spec = (\n    Window.partitionBy(\"instrument\")\n    .orderBy(\n        F.col(\"trade_time\").desc(),\n        F.col(\"trade_id\").desc()\n    )\n)\n\nlatest_trades = (\n    trades_df\n    .withColumn(\"rn\", F.row_number().over(window_spec))\n    .filter(F.col(\"rn\") == 1)\n    .drop(\"rn\")\n)",
+        explanation: "The window partitions records by instrument and orders each group from newest to oldest. row_number assigns 1 to the first record in each group. Filtering for rn = 1 keeps one row per instrument. Ensure trade_time has a proper timestamp type and the tie-breaker is valid."
+      },
+      {
+        title: "Remove duplicate events safely",
+        description: "Create a DataFrame containing one record per source_event_id. Consider how conflicting duplicates should be handled.",
+        data: "Columns: source_event_id, instrument, event_type\nE101, AAPL, PRICE\nE102, MSFT, PRICE\nE101, AAPL, PRICE",
+        code: "deduplicated = events_df.dropDuplicates(\n    [\"source_event_id\"]\n)",
+        explanation: "dropDuplicates removes duplicate keys, but if duplicate-key records have different values, it does not define which record wins. For deterministic production behavior, use a window ordered by source version or event timestamp, apply an explicit winner rule, and quarantine conflicting records when needed."
+      },
+      {
+        title: "Aggregate daily trading volume",
+        description: "Calculate total quantity per instrument and trade date.",
+        data: "Columns: instrument, trade_timestamp, quantity\nAAPL, 2026-10-10 09:30:00, 100\nAAPL, 2026-10-10 10:30:00, 50\nMSFT, 2026-10-10 11:00:00, 200",
+        code: "from pyspark.sql import functions as F\n\ndaily_volume = (\n    trades_df\n    .withColumn(\n        \"trade_date\",\n        F.to_date(\"trade_timestamp\")\n    )\n    .groupBy(\"instrument\", \"trade_date\")\n    .agg(F.sum(\"quantity\").alias(\"total_quantity\"))\n)",
+        explanation: "The transformation derives the trade date, groups records by instrument and date, and sums quantity. In production, clarify timezone rules before deriving the date. For large datasets, inspect the execution plan and data distribution, and avoid unnecessary shuffles or repeated actions."
+      },
+      {
+        title: "Find invalid records and quarantine them",
+        description: "Separate trades with missing instrument IDs or non-positive prices from valid records.",
+        data: "Columns: trade_id, instrument, price\n1, AAPL, 220\n2, NULL, 100\n3, MSFT, -5\n4, NVDA, 120",
+        code: "from pyspark.sql import functions as F\n\nvalid_condition = (\n    F.col(\"instrument\").isNotNull()\n    & (F.length(F.trim(F.col(\"instrument\"))) > 0)\n    & F.col(\"price\").isNotNull()\n    & (F.col(\"price\") > 0)\n)\n\nvalid_trades = trades_df.filter(valid_condition)\ninvalid_trades = trades_df.filter(~valid_condition)",
+        explanation: "The same validation condition divides accepted and rejected rows. Persist invalid records with a rejection reason, source identity, and processing run ID rather than silently dropping them. Also validate schema and data types. Whether a non-positive price is invalid depends on the instrument and business rules."
+      }
+    ]
+  };
+
+  const mode = document.getElementById("practice-mode");
+  const counter = document.getElementById("practice-counter");
+  const title = document.getElementById("practice-question");
+  const description = document.getElementById("practice-description");
+  const data = document.getElementById("practice-data");
+  const solution = document.getElementById("practice-solution");
+  const code = document.getElementById("practice-code");
+  const explanation = document.getElementById("practice-explanation");
+  const reveal = document.getElementById("practice-reveal");
+  const copy = document.getElementById("practice-copy");
+  const previous = document.getElementById("practice-previous");
+  const next = document.getElementById("practice-next");
+  const status = document.getElementById("practice-status");
+
+  if (!mode || !counter || !title || !code) return;
+
+  let index = 0;
+  let isRevealed = false;
+
+  function render() {
+    const list = questions[mode.value];
+    const item = list[index];
+
+    counter.textContent =
+      mode.value + " · Question " + (index + 1) + " of " + list.length;
+    title.textContent = item.title;
+    description.textContent = item.description;
+    data.textContent = item.data;
+    code.textContent = item.code;
+    explanation.textContent = item.explanation;
+
+    solution.classList.toggle("visible", isRevealed);
+    reveal.textContent = isRevealed ? "Hide solution" : "Reveal solution";
+    copy.disabled = !isRevealed;
+    previous.disabled = index === 0;
+    next.disabled = index === list.length - 1;
+    next.textContent = index === list.length - 1
+      ? "Last question"
+      : "Next question →";
+
+    status.textContent = isRevealed
+      ? "Review the code and explanation. Try explaining the trade-offs aloud."
+      : "Try solving the problem before revealing the answer.";
+  }
+
+  mode.addEventListener("change", function () {
+    index = 0;
+    isRevealed = false;
+    render();
+  });
+
+  reveal.addEventListener("click", function () {
+    isRevealed = !isRevealed;
+    render();
+  });
+
+  previous.addEventListener("click", function () {
+    if (index > 0) {
+      index--;
+      isRevealed = false;
+      render();
+    }
+  });
+
+  next.addEventListener("click", function () {
+    if (index < questions[mode.value].length - 1) {
+      index++;
+      isRevealed = false;
+      render();
+    }
+  });
+
+  copy.addEventListener("click", async function () {
+    if (!isRevealed) return;
+
+    try {
+      await navigator.clipboard.writeText(code.textContent);
+      status.textContent = "Code copied. Paste it into your SQL or PySpark editor.";
+    } catch (error) {
+      status.textContent =
+        "Copy was blocked by the browser. Select the code and copy it manually.";
+    }
+  });
+
+  render();
+})();
+</script>
+<!-- END SQL & PYSPARK PLAYGROUND SCRIPT -->
 </body>
 </html>
