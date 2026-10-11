@@ -1035,6 +1035,155 @@
 }
 
 /* ===== END DAILY CHALLENGE STYLES ===== */
+    
+/* ===== INTERACTIVE DATA ENGINEERING QUIZ ===== */
+
+.de-quiz {
+  padding: 28px;
+  background: #111827;
+  border: 1px solid #263244;
+  border-radius: 18px;
+  margin: 28px 0;
+}
+
+.de-quiz-progress {
+  height: 6px;
+  background: #263244;
+  border-radius: 999px;
+  overflow: hidden;
+  margin: 12px 0 22px;
+}
+
+.de-quiz-progress-bar {
+  height: 100%;
+  width: 0;
+  background: #3b82f6;
+  transition: width 0.25s ease;
+}
+
+.de-quiz-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  color: #94a3b8;
+  font-size: 13px;
+}
+
+.de-quiz h3 {
+  color: #f1f5f9;
+  font-size: 22px;
+  line-height: 1.5;
+  margin: 18px 0;
+}
+
+.de-quiz-options {
+  display: grid;
+  gap: 10px;
+}
+
+.de-quiz-option {
+  display: block;
+  width: 100%;
+  padding: 14px 16px;
+  background: #0b1220;
+  color: #e2e8f0;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  text-align: left;
+  cursor: pointer;
+  font: inherit;
+  line-height: 1.6;
+}
+
+.de-quiz-option:hover:not(:disabled) {
+  border-color: #60a5fa;
+  background: #142238;
+}
+
+.de-quiz-option:disabled {
+  cursor: default;
+  opacity: 1;
+}
+
+.de-quiz-option.correct {
+  border-color: #22c55e;
+  background: #10251d;
+}
+
+.de-quiz-option.incorrect {
+  border-color: #f87171;
+  background: #2a171b;
+}
+
+.de-quiz-feedback {
+  margin-top: 18px;
+  padding: 16px;
+  background: #0b1424;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  color: #cbd5e1;
+  line-height: 1.7;
+}
+
+.de-quiz-feedback strong {
+  color: #f1f5f9;
+}
+
+.de-quiz-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.de-quiz-btn {
+  padding: 11px 17px;
+  border: 1px solid #3b82f6;
+  border-radius: 9px;
+  background: #2563eb;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.de-quiz-btn.secondary {
+  background: transparent;
+  border-color: #475569;
+  color: #e2e8f0;
+}
+
+.de-quiz-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.de-quiz-result {
+  padding: 22px;
+  background: #0b1424;
+  border: 1px solid #31558a;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.de-quiz-result-score {
+  font-size: 36px;
+  font-weight: 800;
+  color: #93c5fd;
+  margin: 12px 0;
+}
+
+@media (max-width: 600px) {
+  .de-quiz {
+    padding: 19px;
+  }
+
+  .de-quiz h3 {
+    font-size: 19px;
+  }
+}
+
+/* ===== END INTERACTIVE QUIZ STYLES ===== */
   </style>
 </head>
 
@@ -1052,6 +1201,7 @@
       <nav class="nav-links" aria-label="Main navigation">
         <a href="#resources">Resources</a>
         <a href="#daily-challenge">Daily Challenge</a>
+        <a href="#quiz">Interview Quiz</a>
         <a href="#roadmap">Roadmap</a>
         <a href="#projects">Projects</a>
         <a href="#interviews">Interview Prep</a>
@@ -1290,6 +1440,73 @@
 </section>
 <!-- END DAILY DATA ENGINEERING CHALLENGE -->
     
+<!-- INTERACTIVE DATA ENGINEERING QUIZ -->
+<section id="quiz" class="alternate">
+  <div class="container">
+    <div class="section-heading">
+      <div>
+        <div class="section-kicker">Test your knowledge</div>
+        <h2>Data Engineering Interview Quiz</h2>
+        <p class="section-description">
+          Practise technical interview questions, check your answers,
+          and learn why each answer is correct.
+        </p>
+      </div>
+    </div>
+
+    <div class="de-quiz" id="de-quiz">
+      <div class="de-quiz-meta">
+        <span id="de-quiz-counter">Question 1 of 8</span>
+        <span id="de-quiz-score">Score: 0</span>
+      </div>
+
+      <div class="de-quiz-progress">
+        <div
+          class="de-quiz-progress-bar"
+          id="de-quiz-progress-bar">
+        </div>
+      </div>
+
+      <div id="de-quiz-question-area">
+        <h3 id="de-quiz-question">Loading question...</h3>
+        <div class="de-quiz-options" id="de-quiz-options"></div>
+        <div
+          class="de-quiz-feedback"
+          id="de-quiz-feedback"
+          role="status"
+          aria-live="polite"
+          hidden>
+        </div>
+
+        <div class="de-quiz-actions">
+          <button
+            type="button"
+            class="de-quiz-btn"
+            id="de-quiz-next"
+            disabled>
+            Next Question
+          </button>
+        </div>
+      </div>
+
+      <div class="de-quiz-result" id="de-quiz-result" hidden>
+        <div class="section-kicker">Quiz completed</div>
+        <h3>Your Result</h3>
+        <div class="de-quiz-result-score" id="de-quiz-final-score">
+          0 / 8
+        </div>
+        <p id="de-quiz-result-message"></p>
+        <button
+          type="button"
+          class="de-quiz-btn"
+          id="de-quiz-restart">
+          Try Again
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- END INTERACTIVE DATA ENGINEERING QUIZ -->
     <section id="projects">
       <div class="container">
         <div class="section-heading">
@@ -2106,6 +2323,245 @@
   });
 
   renderChallenge();
+})();
+</script>
+  
+<script>
+(function () {
+  const questions = [
+    {
+      topic: "SQL",
+      question: "Which SQL function can assign a unique sequential number to rows within each group?",
+      options: [
+        "COUNT()",
+        "ROW_NUMBER()",
+        "SUM()",
+        "DISTINCT()"
+      ],
+      correct: 1,
+      explanation: "ROW_NUMBER() assigns sequential numbers within a window partition. Combined with PARTITION BY and ORDER BY, it is useful for ranking records and deduplication."
+    },
+    {
+      topic: "SQL",
+      question: "A table contains multiple records per customer. How would you keep the latest record per customer?",
+      options: [
+        "Use DISTINCT on every column",
+        "Use GROUP BY without aggregating other columns",
+        "Use ROW_NUMBER() partitioned by customer and ordered by timestamp descending",
+        "Use COUNT(*)"
+      ],
+      correct: 2,
+      explanation: "A window function ranks records for each customer. Filtering to row number 1 returns the latest row. Add a deterministic tie-breaker if timestamps can match."
+    },
+    {
+      topic: "PYTHON",
+      question: "Which Python data structure is designed to store unique elements?",
+      options: [
+        "List",
+        "Tuple",
+        "Set",
+        "String"
+      ],
+      correct: 2,
+      explanation: "A set stores unique hashable elements and is useful for membership checks and removing duplicates. It does not guarantee the original input order."
+    },
+    {
+      topic: "PYTHON",
+      question: "What is the main benefit of using a generator to process a large file?",
+      options: [
+        "It automatically sorts the file",
+        "It can yield items one at a time instead of loading everything into memory",
+        "It guarantees that every record is valid",
+        "It automatically runs code in parallel"
+      ],
+      correct: 1,
+      explanation: "Generators can process data incrementally, reducing memory usage. They do not automatically validate records or parallelise the work."
+    },
+    {
+      topic: "SPARK",
+      question: "Which operation commonly causes data to move between Spark partitions?",
+      options: [
+        "A narrow map transformation",
+        "A shuffle caused by groupByKey or a repartitioning operation",
+        "Reading a local variable",
+        "Defining a Python function"
+      ],
+      correct: 1,
+      explanation: "Shuffles redistribute data across partitions and can be expensive due to network transfer, disk I/O, and serialization. Inspect the execution plan and Spark UI to understand the actual cost."
+    },
+    {
+      topic: "SPARK",
+      question: "Why can a broadcast join improve Spark performance?",
+      options: [
+        "It removes the need to read the large dataset",
+        "It sends a suitably small dataset to workers so a shuffle of the large side may be avoided",
+        "It converts every column to a partition key",
+        "It guarantees zero memory usage"
+      ],
+      correct: 1,
+      explanation: "Broadcasting a small relation can avoid shuffling the large relation for a join. The broadcast must fit available memory; confirm the plan and watch for memory pressure."
+    },
+    {
+      topic: "KAFKA",
+      question: "What primarily determines the ordering guarantee of Kafka records?",
+      options: [
+        "Ordering is guaranteed across every topic",
+        "Records are ordered within a partition",
+        "Ordering is always based on the consumer's machine clock",
+        "Records are ordered by message size"
+      ],
+      correct: 1,
+      explanation: "Kafka preserves record order within a partition. If ordering by instrument or trade is important, use a suitable key and partitioning strategy, while considering the impact of partition changes."
+    },
+    {
+      topic: "KAFKA",
+      question: "What does a Kafka consumer offset represent?",
+      options: [
+        "The database password",
+        "The position of a record within a partition",
+        "The number of topics in a cluster",
+        "The size of a broker's disk"
+      ],
+      correct: 1,
+      explanation: "Offsets identify record positions within a partition. Consumer offset management helps track progress, but safe recovery also depends on commit timing and whether downstream processing is idempotent."
+    }
+  ];
+
+  const root = document.getElementById("de-quiz");
+  if (!root || root.dataset.initialized === "true") return;
+  root.dataset.initialized = "true";
+
+  const counter = document.getElementById("de-quiz-counter");
+  const scoreDisplay = document.getElementById("de-quiz-score");
+  const progress = document.getElementById("de-quiz-progress-bar");
+  const questionTitle = document.getElementById("de-quiz-question");
+  const optionsArea = document.getElementById("de-quiz-options");
+  const feedback = document.getElementById("de-quiz-feedback");
+  const nextButton = document.getElementById("de-quiz-next");
+  const questionArea = document.getElementById("de-quiz-question-area");
+  const resultArea = document.getElementById("de-quiz-result");
+  const finalScore = document.getElementById("de-quiz-final-score");
+  const resultMessage = document.getElementById("de-quiz-result-message");
+  const restartButton = document.getElementById("de-quiz-restart");
+
+  let currentIndex = 0;
+  let score = 0;
+  let answered = false;
+
+  function renderQuestion() {
+    const item = questions[currentIndex];
+    answered = false;
+
+    counter.textContent =
+      "Question " + (currentIndex + 1) + " of " + questions.length;
+    scoreDisplay.textContent = "Score: " + score;
+    progress.style.width =
+      (currentIndex / questions.length * 100) + "%";
+
+    questionTitle.textContent = item.question;
+    optionsArea.replaceChildren();
+
+    feedback.hidden = true;
+    feedback.textContent = "";
+    nextButton.disabled = true;
+    nextButton.textContent =
+      currentIndex === questions.length - 1
+        ? "View Final Score"
+        : "Next Question";
+
+    item.options.forEach(function (optionText, index) {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "de-quiz-option";
+      button.textContent =
+        String.fromCharCode(65 + index) + ". " + optionText;
+
+      button.addEventListener("click", function () {
+        if (answered) return;
+        answered = true;
+
+        const isCorrect = index === item.correct;
+        if (isCorrect) score++;
+
+        Array.from(optionsArea.children).forEach(function (option, i) {
+          option.disabled = true;
+
+          if (i === item.correct) {
+            option.classList.add("correct");
+          } else if (i === index && !isCorrect) {
+            option.classList.add("incorrect");
+          }
+        });
+
+        scoreDisplay.textContent = "Score: " + score;
+        feedback.replaceChildren();
+
+        const heading = document.createElement("strong");
+        heading.textContent = isCorrect
+          ? "Correct! "
+          : "Not quite. ";
+
+        const explanationText = document.createElement("span");
+        explanationText.textContent = item.explanation;
+
+        feedback.append(heading, explanationText);
+        feedback.hidden = false;
+        nextButton.disabled = false;
+        progress.style.width =
+          ((currentIndex + 1) / questions.length * 100) + "%";
+      });
+
+      optionsArea.appendChild(button);
+    });
+  }
+
+  function showResults() {
+    questionArea.hidden = true;
+    resultArea.hidden = false;
+    counter.textContent = "Quiz completed";
+    progress.style.width = "100%";
+    finalScore.textContent = score + " / " + questions.length;
+
+    const percentage = Math.round(score / questions.length * 100);
+
+    if (percentage === 100) {
+      resultMessage.textContent =
+        "Excellent! You answered every question correctly. Try explaining the reasoning aloud as interview practice.";
+    } else if (percentage >= 75) {
+      resultMessage.textContent =
+        "Strong result. Review the questions you missed and practise explaining each concept.";
+    } else if (percentage >= 50) {
+      resultMessage.textContent =
+        "Good start. Revisit the explanations and try the quiz again to reinforce your understanding.";
+    } else {
+      resultMessage.textContent =
+        "Use this as a learning checkpoint. Review each explanation, study the concepts, and retake the quiz.";
+    }
+
+    scoreDisplay.textContent = "Final score: " + score;
+  }
+
+  nextButton.addEventListener("click", function () {
+    if (!answered) return;
+
+    if (currentIndex === questions.length - 1) {
+      showResults();
+    } else {
+      currentIndex++;
+      renderQuestion();
+    }
+  });
+
+  restartButton.addEventListener("click", function () {
+    currentIndex = 0;
+    score = 0;
+    answered = false;
+    resultArea.hidden = true;
+    questionArea.hidden = false;
+    renderQuestion();
+  });
+
+  renderQuestion();
 })();
 </script>
 </body>
