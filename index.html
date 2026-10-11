@@ -1051,6 +1051,7 @@
 
       <nav class="nav-links" aria-label="Main navigation">
         <a href="#resources">Resources</a>
+        <a href="#daily-challenge">Daily Challenge</a>
         <a href="#roadmap">Roadmap</a>
         <a href="#projects">Projects</a>
         <a href="#interviews">Interview Prep</a>
@@ -1227,6 +1228,68 @@
       </div>
     </section>
 
+    
+<!-- DAILY DATA ENGINEERING CHALLENGE -->
+<section id="daily-challenge" class="alternate">
+  <div class="container">
+    <div class="section-heading">
+      <div>
+        <div class="section-kicker">Practice every day</div>
+        <h2>Daily Data Engineering Challenge</h2>
+        <p class="section-description">
+          Solve practical engineering problems. Reveal the solution
+          when you're ready, and understand the reasoning behind it.
+        </p>
+      </div>
+    </div>
+
+    <article class="daily-challenge">
+      <div class="daily-challenge-top">
+        <span class="daily-challenge-label" id="daily-challenge-number">
+          DAILY CHALLENGE
+        </span>
+        <span class="daily-challenge-badge" id="daily-challenge-topic">
+          SQL
+        </span>
+      </div>
+
+      <h3 id="daily-challenge-title">Loading today's challenge...</h3>
+
+      <p id="daily-challenge-question"></p>
+
+      <div class="daily-challenge-example" id="daily-challenge-example"></div>
+
+      <p id="daily-challenge-task"></p>
+
+      <div class="daily-challenge-actions">
+        <button
+          type="button"
+          class="daily-challenge-btn"
+          id="daily-challenge-reveal">
+          Reveal Solution
+        </button>
+
+        <button
+          type="button"
+          class="daily-challenge-btn secondary"
+          id="daily-challenge-next">
+          Try Another Challenge
+        </button>
+      </div>
+
+      <div
+        class="daily-challenge-answer"
+        id="daily-challenge-answer"
+        hidden>
+        <h4>Solution and Explanation</h4>
+        <pre id="daily-challenge-code"></pre>
+        <p id="daily-challenge-explanation"></p>
+      </div>
+    </article>
+  </div>
+</section>
+<!-- END DAILY DATA ENGINEERING CHALLENGE -->
+    
     <section id="projects">
       <div class="container">
         <div class="section-heading">
@@ -1896,5 +1959,154 @@
     renderChips();
     renderResources();
   </script>
+  
+<script>
+(function () {
+  const challenges = [
+    {
+      number: "CHALLENGE 001",
+      topic: "SQL",
+      title: "Find the latest price for each instrument",
+      question:
+        "A market-data table contains multiple price records for each instrument. Return only the most recent record for every instrument.",
+      example:
+        "market_prices\n" +
+        "instrument_id | price | price_timestamp\n" +
+        "101            | 150   | 2026-10-10 10:00\n" +
+        "101            | 152   | 2026-10-10 10:05\n" +
+        "202            | 240   | 2026-10-10 10:02",
+      task:
+        "Task: Return one latest record per instrument. Assume record_id provides a unique, deterministic tie-breaker.",
+      code:
+        "WITH ranked_prices AS (\n" +
+        "    SELECT instrument_id, price, price_timestamp,\n" +
+        "           ROW_NUMBER() OVER (\n" +
+        "               PARTITION BY instrument_id\n" +
+        "               ORDER BY price_timestamp DESC,\n" +
+        "                        record_id DESC\n" +
+        "           ) AS rn\n" +
+        "    FROM market_prices\n" +
+        ")\n" +
+        "SELECT instrument_id, price, price_timestamp\n" +
+        "FROM ranked_prices\n" +
+        "WHERE rn = 1;",
+      explanation:
+        "PARTITION BY creates a separate ranking for each instrument. " +
+        "The newest timestamp receives row number 1. The unique record_id " +
+        "breaks timestamp ties deterministically. For large tables, inspect " +
+        "the execution plan and consider suitable indexes or partitioning."
+    },
+    {
+      number: "CHALLENGE 002",
+      topic: "PYTHON",
+      title: "Remove duplicate records without losing order",
+      question:
+        "An ingestion job receives repeated trade identifiers. You need to remove duplicates while keeping the first occurrence in the original order.",
+      example:
+        "trade_ids = [101, 102, 101, 103, 102, 104]\n\n" +
+        "Expected result:\n" +
+        "[101, 102, 103, 104]",
+      task:
+        "Task: Write Python code that preserves the original order and runs efficiently for a large list.",
+      code:
+        "trade_ids = [101, 102, 101, 103, 102, 104]\n\n" +
+        "unique_ids = list(dict.fromkeys(trade_ids))\n\n" +
+        "print(unique_ids)",
+      explanation:
+        "Dictionaries preserve insertion order in modern Python. " +
+        "dict.fromkeys creates one entry per distinct identifier, retaining " +
+        "the first occurrence. This is an in-memory solution; for very large " +
+        "datasets, consider database deduplication or distributed processing."
+    },
+    {
+      number: "CHALLENGE 003",
+      topic: "PYSPARK",
+      title: "Keep the latest record per customer",
+      question:
+        "A Spark DataFrame contains multiple updates for the same customer. You must keep only the latest update.",
+      example:
+        "customer_id | update_timestamp | status\n" +
+        "10          | 2026-10-10 09:00 | OPEN\n" +
+        "10          | 2026-10-10 10:00 | CLOSED\n" +
+        "20          | 2026-10-10 08:00 | OPEN",
+      task:
+        "Task: Use a Spark window function to keep the latest row per customer. Assume record_id is a unique tie-breaker.",
+      code:
+        "from pyspark.sql import functions as F\n" +
+        "from pyspark.sql.window import Window\n\n" +
+        "window_spec = Window.partitionBy(\n" +
+        "    'customer_id'\n" +
+        ").orderBy(\n" +
+        "    F.col('update_timestamp').desc(),\n" +
+        "    F.col('record_id').desc()\n" +
+        ")\n\n" +
+        "latest = (\n" +
+        "    df.withColumn(\n" +
+        "        'rn', F.row_number().over(window_spec)\n" +
+        "    )\n" +
+        "    .filter(F.col('rn') == 1)\n" +
+        "    .drop('rn')\n" +
+        ")",
+      explanation:
+        "The window partitions rows by customer and ranks updates newest first. " +
+        "Filtering to row number 1 retains the latest row. Window operations " +
+        "can cause shuffles, so examine the execution plan and data skew when " +
+        "processing large datasets."
+    }
+  ];
+
+  const title = document.getElementById("daily-challenge-title");
+  const question = document.getElementById("daily-challenge-question");
+  const example = document.getElementById("daily-challenge-example");
+  const task = document.getElementById("daily-challenge-task");
+  const number = document.getElementById("daily-challenge-number");
+  const topic = document.getElementById("daily-challenge-topic");
+  const answer = document.getElementById("daily-challenge-answer");
+  const code = document.getElementById("daily-challenge-code");
+  const explanation = document.getElementById("daily-challenge-explanation");
+  const reveal = document.getElementById("daily-challenge-reveal");
+  const next = document.getElementById("daily-challenge-next");
+
+  if (!title || !reveal || !next) return;
+
+  // Choose a challenge using the current date.
+  // The same date gives the same default challenge.
+  const now = new Date();
+  const dayNumber = Math.floor(
+    Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()) /
+    86400000
+  );
+  let currentIndex = ((dayNumber % challenges.length) + challenges.length)
+    % challenges.length;
+
+  function renderChallenge() {
+    const item = challenges[currentIndex];
+
+    number.textContent = item.number;
+    topic.textContent = item.topic;
+    title.textContent = item.title;
+    question.textContent = item.question;
+    example.textContent = item.example;
+    task.textContent = item.task;
+    code.textContent = item.code;
+    explanation.textContent = item.explanation;
+
+    answer.hidden = true;
+    reveal.textContent = "Reveal Solution";
+  }
+
+  reveal.addEventListener("click", function () {
+    answer.hidden = !answer.hidden;
+    reveal.textContent = answer.hidden ? "Reveal Solution" : "Hide Solution";
+  });
+
+  next.addEventListener("click", function () {
+    currentIndex = (currentIndex + 1) % challenges.length;
+    renderChallenge();
+  });
+
+  renderChallenge();
+})();
+</script>
 </body>
 </html>
