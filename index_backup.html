@@ -1350,6 +1350,158 @@
 }
 
 /* ===== END FIND THE BUG LAB ===== */
+    
+/* INTERACTIVE ARCHITECTURE LIBRARY */
+.arch-library {
+  margin-top: 32px;
+}
+
+.arch-intro {
+  max-width: 760px;
+  color: #94A3B8;
+  line-height: 1.8;
+  margin: 10px 0 24px;
+}
+
+.arch-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.arch-card {
+  min-width: 0;
+  padding: 24px;
+  border: 1px solid #263244;
+  border-radius: 18px;
+  background: #111827;
+}
+
+.arch-card h3 {
+  color: #F1F5F9;
+  font-size: 19px;
+  margin: 0 0 8px;
+}
+
+.arch-tag {
+  display: inline-block;
+  padding: 5px 10px;
+  border: 1px solid #334155;
+  border-radius: 999px;
+  color: #93C5FD;
+  font-size: 12px;
+  margin-bottom: 15px;
+}
+
+.arch-summary {
+  color: #94A3B8;
+  line-height: 1.7;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.arch-flow-label {
+  color: #94A3B8;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.arch-flow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 8px;
+  margin: 0 0 22px;
+}
+
+.arch-node {
+  flex: 1 1 105px;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 12px 8px;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  background: #0B1220;
+  color: #F1F5F9;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.arch-arrow {
+  align-self: center;
+  color: #60A5FA;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.arch-card details {
+  border-top: 1px solid #263244;
+  padding-top: 16px;
+  margin-top: 16px;
+}
+
+.arch-card summary {
+  cursor: pointer;
+  color: #93C5FD;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.arch-detail {
+  color: #CBD5E1;
+  font-size: 14px;
+  line-height: 1.8;
+  padding-top: 12px;
+}
+
+.arch-detail strong {
+  color: #F1F5F9;
+}
+
+.arch-detail ul {
+  padding-left: 20px;
+}
+
+.arch-detail li {
+  margin-bottom: 8px;
+}
+
+.arch-interview {
+  margin-top: 14px;
+  padding: 14px;
+  border-left: 3px solid #3B82F6;
+  background: #0B1220;
+  border-radius: 0 8px 8px 0;
+}
+
+.arch-interview p {
+  margin: 6px 0 0;
+}
+
+.arch-note {
+  color: #94A3B8;
+  font-size: 12px;
+  line-height: 1.7;
+  margin-top: 12px;
+}
+
+@media (max-width: 760px) {
+  .arch-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .arch-card {
+    padding: 18px;
+  }
+}
   </style>
 </head>
 
@@ -1369,6 +1521,7 @@
         <a href="#daily-challenge">Daily Challenge</a>
         <a href="#quiz">Interview Quiz</a>
         <a href="#bug-lab">Find the Bug</a>
+        <a href="#architecture-library">Architecture Library</a>
         <a href="#roadmap">Roadmap</a>
         <a href="#projects">Projects</a>
         <a href="#interviews">Interview Prep</a>
@@ -1736,6 +1889,208 @@
   </div>
 </section>
 <!-- END FIND THE BUG LAB -->
+    
+<section id="architecture-library" class="alternate">
+  <div class="container arch-library">
+    <h2>Data Engineering Architecture Library</h2>
+
+    <p class="arch-intro">
+      Explore production-style data architectures, understand how data moves
+      across each layer, and prepare to explain the design decisions in senior
+      Data Engineer interviews.
+    </p>
+
+    <div class="arch-grid">
+
+      <!-- ARCHITECTURE 1: BATCH PIPELINE -->
+      <article class="arch-card">
+        <span class="arch-tag">01 · Batch Processing</span>
+        <h3>Enterprise Batch Data Pipeline</h3>
+
+        <p class="arch-summary">
+          Process large volumes of source data on a schedule, validate the
+          results, and publish reliable datasets for reporting and analytics.
+        </p>
+
+        <div class="arch-flow-label">Data flow</div>
+        <div class="arch-flow">
+          <div class="arch-node">Source Systems<br>DB / Files / APIs</div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-node">Ingestion<br>ADF / Airflow</div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-node">Raw Storage<br>ADLS / S3</div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-node">Transform<br>Spark / SQL</div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-node">Serving<br>Warehouse / BI</div>
+        </div>
+
+        <details>
+          <summary>How it works in practice</summary>
+          <div class="arch-detail">
+            <ul>
+              <li><strong>Ingestion:</strong> Extract new or changed data from source systems using scheduled jobs, APIs, files, or CDC.</li>
+              <li><strong>Raw layer:</strong> Preserve source data and ingestion metadata so failed processing can be investigated or replayed.</li>
+              <li><strong>Transformation:</strong> Use Spark or SQL to standardize schemas, join datasets, and apply business rules.</li>
+              <li><strong>Validation:</strong> Check required fields, duplicate business keys, record counts, and reconciliation totals.</li>
+              <li><strong>Publishing:</strong> Make validated datasets available to downstream applications, analysts, or reports.</li>
+            </ul>
+
+            <p><strong>Failure handling:</strong> Retry transient failures, isolate invalid records, alert on unresolved errors, and rerun safely using checkpoints or idempotent writes.</p>
+
+            <div class="arch-interview">
+              <strong>Interview question</strong>
+              <p>How would you design a batch pipeline that processes 500 million records every day?</p>
+              <p><strong>Answer approach:</strong> Discuss incremental ingestion, partitioning, distributed processing, data skew, write strategy, reconciliation, monitoring, and recovery. Select partition sizes and compute resources based on actual data volume and performance tests.</p>
+            </div>
+          </div>
+        </details>
+      </article>
+
+      <!-- ARCHITECTURE 2: REAL-TIME STREAMING -->
+      <article class="arch-card">
+        <span class="arch-tag">02 · Real-Time Streaming</span>
+        <h3>Market Data Streaming Platform</h3>
+
+        <p class="arch-summary">
+          Ingest continuous market events, process them with low latency, and
+          publish current prices while retaining data for downstream analysis.
+        </p>
+
+        <div class="arch-flow-label">Event flow</div>
+        <div class="arch-flow">
+          <div class="arch-node">Exchange Feeds</div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-node">Java Producer</div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-node">Kafka Topics</div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-node">Stream Processing</div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-node">Redis / Oracle</div>
+        </div>
+
+        <details>
+          <summary>How it works in practice</summary>
+          <div class="arch-detail">
+            <ul>
+              <li><strong>Producers:</strong> Publish price events with fields such as instrument ID, exchange, bid, ask, event timestamp, and sequence number.</li>
+              <li><strong>Kafka:</strong> Buffers events in durable topics. Choose partition keys carefully to balance parallelism and preserve ordering where required.</li>
+              <li><strong>Processing:</strong> Validate event schemas, detect duplicates, handle late or out-of-order events, and apply transformation rules.</li>
+              <li><strong>Redis:</strong> Can serve the latest price quickly to applications. Oracle or a suitable historical store can retain data for querying and reconciliation.</li>
+              <li><strong>Monitoring:</strong> Track consumer lag, processing latency, malformed messages, throughput, and missing feed events.</li>
+            </ul>
+
+            <p><strong>Important design decision:</strong> Redis is commonly used for low-latency access to current values; it should not automatically be treated as the permanent system of record.</p>
+
+            <div class="arch-interview">
+              <strong>Interview question</strong>
+              <p>How would you prevent duplicate or out-of-order market price updates?</p>
+              <p><strong>Answer approach:</strong> Use event identifiers or sequence numbers, define the ordering key, track processed events where needed, and reject stale updates according to business rules. Make downstream writes idempotent and define recovery behavior for replayed events.</p>
+            </div>
+          </div>
+        </details>
+
+        <p class="arch-note">
+          Portfolio connection: this architecture reflects a market-pricing
+          pattern using Java, Kafka, Python, Oracle, and Redis.
+        </p>
+      </article>
+
+      <!-- ARCHITECTURE 3: AZURE DATA PLATFORM -->
+      <article class="arch-card">
+        <span class="arch-tag">03 · Azure Data Platform</span>
+        <h3>Azure Lakehouse Pipeline</h3>
+
+        <p class="arch-summary">
+          Combine managed orchestration, cloud storage, and distributed
+          processing to deliver governed datasets for analytics.
+        </p>
+
+        <div class="arch-flow-label">Platform flow</div>
+        <div class="arch-flow">
+          <div class="arch-node">Sources<br>DB / API / Files</div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-node">Azure Data Factory</div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-node">ADLS Gen2<br>Bronze</div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-node">Databricks<br>Silver / Gold</div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-node">SQL / BI / APIs</div>
+        </div>
+
+        <details>
+          <summary>How it works in practice</summary>
+          <div class="arch-detail">
+            <ul>
+              <li><strong>Azure Data Factory:</strong> Orchestrates ingestion, schedules, dependencies, parameters, retries, and pipeline monitoring.</li>
+              <li><strong>ADLS Gen2:</strong> Stores raw and processed files, commonly in formats such as Parquet where appropriate.</li>
+              <li><strong>Databricks:</strong> Uses Spark to transform data, enforce quality rules, and produce curated datasets. Delta Lake can provide transactional table operations.</li>
+              <li><strong>Security:</strong> Apply Microsoft Entra ID, Azure RBAC, managed identities, and appropriate storage permissions. Avoid embedding credentials in notebooks or source code.</li>
+              <li><strong>Operations:</strong> Log run IDs, input and output counts, processing duration, rejected records, and failure details.</li>
+            </ul>
+
+            <p><strong>Implementation pattern:</strong> Pass a batch or watermark parameter from orchestration to the processing job, persist its run status, and update the watermark only after the relevant data has been processed successfully.</p>
+
+            <div class="arch-interview">
+              <strong>Interview question</strong>
+              <p>What is the difference between Azure Data Factory and Databricks?</p>
+              <p><strong>Answer:</strong> ADF primarily orchestrates and moves data between systems. Databricks primarily provides a compute environment for distributed transformations, Spark processing, and lakehouse workloads. They can work together in one pipeline.</p>
+            </div>
+          </div>
+        </details>
+      </article>
+
+      <!-- ARCHITECTURE 4: MEDALLION AND QUALITY -->
+      <article class="arch-card">
+        <span class="arch-tag">04 · Lakehouse & Data Quality</span>
+        <h3>Bronze → Silver → Gold</h3>
+
+        <p class="arch-summary">
+          Separate raw ingestion, validated business data, and consumer-ready
+          datasets so data quality issues can be traced and safely corrected.
+        </p>
+
+        <div class="arch-flow-label">Data refinement</div>
+        <div class="arch-flow">
+          <div class="arch-node">Source Data<br>Batch / CDC</div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-node">Bronze<br>Raw / Replay</div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-node">Silver<br>Clean / Deduplicate</div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-node">Gold<br>Business Rules</div>
+          <span class="arch-arrow">→</span>
+          <div class="arch-node">Data Products<br>Reports / APIs</div>
+        </div>
+
+        <details>
+          <summary>How it works in practice</summary>
+          <div class="arch-detail">
+            <ul>
+              <li><strong>Bronze:</strong> Keep source-aligned data and ingestion metadata, including source timestamps and batch IDs.</li>
+              <li><strong>Silver:</strong> Apply schema checks, deduplication, standardization, reference-data joins, and record-level validation.</li>
+              <li><strong>Gold:</strong> Apply business definitions and aggregations for reporting or downstream data products.</li>
+              <li><strong>CDC:</strong> Process inserts, updates, and deletes using reliable change keys, ordering rules, and deletion handling.</li>
+              <li><strong>Idempotency:</strong> Use stable business keys and controlled merge or upsert logic so a rerun does not create additional copies of the same logical record.</li>
+              <li><strong>Data quality:</strong> Record rejected rows, reconcile source-to-target counts, and alert when thresholds are breached.</li>
+            </ul>
+
+            <p><strong>Example:</strong> If a trade references an instrument that is missing from the reference-data table, retain the rejected record and its reason, alert the relevant team, and reprocess it when the reference data becomes available.</p>
+
+            <div class="arch-interview">
+              <strong>Interview question</strong>
+              <p>How do you make a data pipeline safe to rerun after a failure?</p>
+              <p><strong>Answer approach:</strong> Identify a stable business key, make writes idempotent, maintain run and checkpoint metadata, use transactional merge operations where supported, and reconcile outputs before marking a run successful. Handle partial failures and concurrent runs explicitly.</p>
+            </div>
+          </div>
+        </details>
+      </article>
+
+    </div>
+  </div>
+</section>
     <section id="projects">
       <div class="container">
         <div class="section-heading">
