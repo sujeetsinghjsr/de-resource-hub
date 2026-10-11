@@ -5131,5 +5131,247 @@ h2 { letter-spacing: -.9px; text-wrap: balance; }
 })();
 </script>
 <!-- END SQL & PYSPARK PLAYGROUND SCRIPT -->
+  <!-- ===== PRO DARK THEME + TECH STACK (paste directly above </body>) ===== -->
+<style>
+:root{
+  --bg:#060A13;--panel:#0D1424;--border:#1C2740;--text:#F1F5F9;--muted:#94A3B8;
+  --accent:#22D3EE;--accent-light:#67E8F9;--green:#34D399;
+  --grad:linear-gradient(90deg,#22D3EE,#8B5CF6);
+}
+html,body{background:#060A13!important}
+body{
+  background:radial-gradient(ellipse at 78% 0,rgba(139,92,246,.14),transparent 40%),#060A13!important;
+  color:#F1F5F9!important;
+  font-family:Inter,-apple-system,"Segoe UI",Roboto,sans-serif!important;
+}
+.alternate{background:#080E1A!important;border-color:#1C2740!important}
+
+/* Header + dropdown nav */
+.site-header{background:rgba(6,10,19,.9)!important;border-bottom:1px solid #1C2740!important}
+.brand-icon{background:var(--grad)!important;color:#06101F!important;font-weight:800;box-shadow:0 6px 24px rgba(34,211,238,.25)!important}
+.nav-links>a:hover,.nav-dropdown>summary:hover,.nav-dropdown[open]>summary{background:rgba(34,211,238,.09)!important;border-color:rgba(34,211,238,.25)!important;color:#fff!important}
+.nav-links>a.nav-cta{border-color:rgba(34,211,238,.45)!important;color:#67E8F9!important}
+.nav-menu{background:#0A1120!important;border-color:#1C2740!important}
+.nav-menu a:hover{background:rgba(34,211,238,.1)!important;color:#fff!important}
+
+/* Hero with subtle grid */
+.hero{
+  position:relative;
+  background:radial-gradient(ellipse at 78% 0,rgba(139,92,246,.24),transparent 45%),
+             radial-gradient(ellipse at 8% 90%,rgba(34,211,238,.14),transparent 45%),#060A13!important;
+}
+.hero::before{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(rgba(148,163,184,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(148,163,184,.06) 1px,transparent 1px);
+  background-size:48px 48px;
+  -webkit-mask-image:radial-gradient(ellipse at 50% 30%,#000 20%,transparent 75%);
+  mask-image:radial-gradient(ellipse at 50% 30%,#000 20%,transparent 75%);
+}
+.hero-content{position:relative;z-index:1}
+.eyebrow{color:#67E8F9!important;background:rgba(34,211,238,.08)!important;border-color:rgba(34,211,238,.3)!important}
+.gradient-text{background:linear-gradient(90deg,#22D3EE,#8B5CF6)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important}
+h1,h2{color:#fff}
+.btn-primary{background:var(--grad)!important;border:none!important;color:#06101F!important;box-shadow:0 8px 28px rgba(34,211,238,.22)}
+.btn-secondary{background:rgba(255,255,255,.04)!important;border-color:#2A3856!important}
+.btn-secondary:hover{border-color:#22D3EE!important}
+.stat-number{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent!important}
+.stats{background:rgba(13,20,36,.75)!important;border-color:#1C2740!important}
+
+/* Accent colours */
+.section-kicker,.category-label,.daily-challenge-label,.sd-kicker,.practice-meta,.arch-tag{color:#22D3EE!important}
+.resource-link,.reset-button,.arch-card summary,.about-link span:last-child,.question-mark,.arch-arrow{color:#67E8F9!important}
+.section-description,.hero-description{color:#9AA9C0!important}
+
+/* Cards */
+.resource-card,.roadmap-card,.project-card,.interview-card,.arch-card,.sd-shell,.practice-panel,.daily-challenge,.de-quiz,.bug-lab,.about-panel{
+  background:linear-gradient(160deg,#0F1729,#0B1220)!important;
+  border-color:#1C2740!important;box-shadow:0 10px 30px rgba(0,0,0,.25)!important;
+}
+.resource-card:hover,.project-card:hover,.roadmap-card:hover,.arch-card:hover{
+  transform:translateY(-4px)!important;border-color:rgba(34,211,238,.5)!important;
+  box-shadow:0 18px 40px rgba(0,0,0,.4)!important;
+}
+.tag,.duration{background:rgba(139,92,246,.13)!important;border-color:rgba(139,92,246,.3)!important;color:#C9B8FF!important}
+.stage-number,.project-icon{background:rgba(34,211,238,.1)!important;border-color:rgba(34,211,238,.3)!important;color:#67E8F9!important}
+.note{border-left-color:#22D3EE!important;background:rgba(34,211,238,.06)!important}
+.filter-control,.practice-select{background:#0D1424!important;border-color:#1C2740!important}
+.filter-control:focus{border-color:#22D3EE!important}
+.chip:hover,.chip.active{border-color:#22D3EE!important;background:rgba(34,211,238,.12)!important}
+
+/* Interactive modules */
+.daily-challenge-btn,.de-quiz-btn,.bug-lab-btn,.sd-action.primary,.practice-btn.primary{background:var(--grad)!important;border:none!important;color:#06101F!important;font-weight:700}
+.de-quiz-progress-bar,.sd-progress-fill{background:var(--grad)!important}
+.sd-scenario-btn:hover,.sd-scenario-btn.active{border-color:#22D3EE!important;background:rgba(34,211,238,.08)!important;box-shadow:none!important}
+.daily-challenge-example,.daily-challenge-answer pre,.bug-lab-code,.practice-data,.practice-code,.bug-lab-feedback pre{background:#050912!important;color:#A5F3FC!important}
+.back-to-top{background:var(--grad)!important;color:#06101F!important}
+.site-footer{background:#050810!important}
+
+/* Tech stack */
+.tech-section{padding:60px 0;border-bottom:1px solid #1C2740}
+.tech-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:14px;margin-top:26px}
+.tech-item{display:flex;flex-direction:column;align-items:center;gap:10px;padding:18px 10px;background:linear-gradient(160deg,#0F1729,#0B1220);border:1px solid #1C2740;border-radius:14px;transition:transform .25s,border-color .25s,box-shadow .25s}
+.tech-item:hover{transform:translateY(-4px);border-color:rgba(34,211,238,.5);box-shadow:0 14px 30px rgba(0,0,0,.35)}
+.tech-logo{width:60px;height:60px;display:grid;place-items:center;border-radius:14px;background:#EEF2F8}
+.tech-logo img{width:40px;height:40px;object-fit:contain}
+.tech-item span{font-size:12px;color:#A9B8CE;font-weight:600;text-align:center}
+
+/* Gentle motion */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+
+<script>
+(function(){
+  var base="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/";
+  var stack=[["Python","python/python-original.svg"],["PostgreSQL","postgresql/postgresql-original.svg"],["Apache Spark","apachespark/apachespark-original.svg"],["Kafka","apachekafka/apachekafka-original.svg"],["Airflow","apacheairflow/apacheairflow-original.svg"],["Databricks","databricks/databricks-original.svg"],["Azure","azure/azure-original.svg"],["AWS","amazonwebservices/amazonwebservices-plain-wordmark.svg"],["Google Cloud","googlecloud/googlecloud-original.svg"],["Docker","docker/docker-original.svg"],["Git","git/git-original.svg"],["GitHub","github/github-original.svg"],["Redis","redis/redis-original.svg"],["Oracle","oracle/oracle-original.svg"],["Java","java/java-original.svg"],["Linux","linux/linux-original.svg"]];
+
+  var target=document.getElementById("resources");
+  if(target){
+    var sec=document.createElement("section");
+    sec.id="tech-stack";sec.className="tech-section";
+    sec.innerHTML='<div class="container"><div class="section-kicker">Core technologies</div><h2>The modern data engineering stack</h2><p class="section-description">The languages, platforms and tools used throughout the resources below.</p><div class="tech-grid"></div></div>';
+    var grid=sec.querySelector(".tech-grid");
+    stack.forEach(function(t){
+      var item=document.createElement("div");item.className="tech-item";
+      var wrap=document.createElement("div");wrap.className="tech-logo";
+      var img=document.createElement("img");
+      img.src=base+t[1];img.alt=t[0]+" logo";img.loading="lazy";
+      img.onerror=function(){item.remove()};
+      wrap.appendChild(img);
+      var label=document.createElement("span");label.textContent=t[0];
+      item.append(wrap,label);grid.appendChild(item);
+    });
+    target.parentNode.insertBefore(sec,target);
+
+    var home=document.querySelector('.nav-links a[href="#home"]');
+    if(home){
+      var link=document.createElement("a");
+      link.href="#tech-stack";link.textContent="Tech Stack";
+      home.insertAdjacentElement("afterend",link);
+    }
+  }
+
+  var els=document.querySelectorAll("main section:not(.hero) > .container");
+  if("IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}});
+    },{threshold:.06});
+    els.forEach(function(el){el.classList.add("reveal");io.observe(el)});
+  }
+})();
+</script>
+<!-- ===== END PRO DARK THEME ===== -->
+  <!-- ===== HERO TECH ORBIT (paste directly above </body>, below the previous block) ===== -->
+<style>
+.hero .container{position:relative}
+.orbit{
+  position:absolute;right:0;top:50%;transform:translateY(-50%);
+  width:460px;height:460px;pointer-events:none;z-index:0;
+  -webkit-mask-image:radial-gradient(circle,#000 62%,transparent 74%);
+  mask-image:radial-gradient(circle,#000 62%,transparent 74%);
+}
+/* faint crosshair grid behind the rings */
+.orbit::before{
+  content:"";position:absolute;inset:0;
+  background:
+    linear-gradient(45deg,transparent calc(50% - .5px),rgba(148,163,184,.10) 50%,transparent calc(50% + .5px)),
+    linear-gradient(-45deg,transparent calc(50% - .5px),rgba(148,163,184,.10) 50%,transparent calc(50% + .5px)),
+    linear-gradient(90deg,transparent calc(50% - .5px),rgba(148,163,184,.08) 50%,transparent calc(50% + .5px)),
+    linear-gradient(0deg,transparent calc(50% - .5px),rgba(148,163,184,.08) 50%,transparent calc(50% + .5px));
+}
+.orbit-core{
+  position:absolute;left:50%;top:50%;width:64px;height:64px;margin:-32px 0 0 -32px;
+  border-radius:50%;display:grid;place-items:center;
+  font:800 18px "JetBrains Mono",Consolas,monospace;color:#06101F;
+  background:linear-gradient(135deg,#22D3EE,#8B5CF6);
+  box-shadow:0 0 40px rgba(34,211,238,.45),0 0 90px rgba(139,92,246,.35);
+  animation:orbitPulse 4s ease-in-out infinite;
+}
+.orbit-ring{
+  position:absolute;left:50%;top:50%;border-radius:50%;
+  border:1px solid rgba(148,163,184,.14);
+  animation:orbitSpin var(--dur) linear infinite;
+}
+.orbit-ring.rev,.orbit-ring.rev .orbit-tile{animation-direction:reverse}
+.orbit-slot{position:absolute;left:50%;top:50%;width:0;height:0}
+.orbit-tile{
+  position:absolute;left:-25px;top:-25px;width:50px;height:50px;
+  display:grid;place-items:center;border-radius:14px;
+  background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  box-shadow:0 8px 24px rgba(0,0,0,.35);
+  animation:orbitUnspin var(--dur) linear infinite;
+}
+.orbit-tile img{width:26px;height:26px;object-fit:contain;filter:brightness(0) invert(1);opacity:.88}
+@keyframes orbitSpin{to{transform:rotate(360deg)}}
+@keyframes orbitUnspin{
+  from{transform:rotate(calc(var(--a) * -1))}
+  to{transform:rotate(calc(var(--a) * -1 - 360deg))}
+}
+@keyframes orbitPulse{50%{transform:scale(1.08);box-shadow:0 0 56px rgba(34,211,238,.6),0 0 110px rgba(139,92,246,.45)}}
+@media(max-width:1100px){.orbit{display:none}}
+@media(prefers-reduced-motion:reduce){.orbit-ring,.orbit-tile,.orbit-core{animation:none!important}}
+</style>
+
+<script>
+(function(){
+  var host=document.querySelector(".hero .container");
+  if(!host) return;
+  var base="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/";
+  var variants=["plain","original","plain-wordmark"];
+
+  var rings=[
+    {r:75, dur:50,  rev:false, icons:["python","apachespark","apachekafka"]},
+    {r:140,dur:80,  rev:true,  icons:["databricks","azure","apacheairflow","postgresql","amazonwebservices"]},
+    {r:200,dur:120, rev:false, icons:["docker","git","github","redis","oracle","java","linux","googlecloud"]}
+  ];
+
+  var orbit=document.createElement("div");
+  orbit.className="orbit";
+  orbit.setAttribute("aria-hidden","true");
+
+  rings.forEach(function(cfg){
+    var ring=document.createElement("div");
+    ring.className="orbit-ring"+(cfg.rev?" rev":"");
+    ring.style.cssText="width:"+cfg.r*2+"px;height:"+cfg.r*2+"px;margin:-"+cfg.r+"px 0 0 -"+cfg.r+"px;--dur:"+cfg.dur+"s";
+
+    cfg.icons.forEach(function(name,i){
+      var angle=Math.round(360/cfg.icons.length*i);
+      var slot=document.createElement("div");
+      slot.className="orbit-slot";
+      slot.style.transform="rotate("+angle+"deg) translateY(-"+cfg.r+"px)";
+
+      var tile=document.createElement("div");
+      tile.className="orbit-tile";
+      tile.style.setProperty("--a",angle+"deg");
+      tile.style.setProperty("--dur",cfg.dur+"s");
+
+      var img=document.createElement("img");
+      var v=0;
+      img.alt="";
+      img.onerror=function(){
+        v++;
+        if(v<variants.length){img.src=base+name+"/"+name+"-"+variants[v]+".svg";}
+        else{slot.remove();}
+      };
+      img.src=base+name+"/"+name+"-"+variants[0]+".svg";
+
+      tile.appendChild(img);
+      slot.appendChild(tile);
+      ring.appendChild(slot);
+    });
+    orbit.appendChild(ring);
+  });
+
+  var core=document.createElement("div");
+  core.className="orbit-core";
+  core.textContent="DE";
+  orbit.appendChild(core);
+
+  host.appendChild(orbit);
+})();
+</script>
+<!-- ===== END HERO TECH ORBIT ===== -->
 </body>
 </html>
