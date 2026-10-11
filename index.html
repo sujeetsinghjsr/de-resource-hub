@@ -2019,6 +2019,134 @@
   }
 }
 /* ===== END SQL & PYSPARK PLAYGROUND ===== */
+    
+/* ===== GROUPED HEADER NAVIGATION ===== */
+
+.site-header .nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-width: 0;
+}
+
+.site-header .nav-links > a,
+.site-header .nav-dropdown > summary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 42px;
+  padding: 9px 13px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  color: #CBD5E1;
+  font-size: 14px;
+  line-height: 1.4;
+  text-decoration: none;
+  cursor: pointer;
+  list-style: none;
+  transition: background-color 0.2s ease,
+              border-color 0.2s ease,
+              color 0.2s ease;
+}
+
+.site-header .nav-dropdown {
+  position: relative;
+}
+
+.site-header .nav-dropdown > summary::-webkit-details-marker {
+  display: none;
+}
+
+.site-header .nav-links > a:hover,
+.site-header .nav-dropdown > summary:hover,
+.site-header .nav-dropdown[open] > summary {
+  background: #111827;
+  border-color: #334155;
+  color: #FFFFFF;
+}
+
+.site-header .nav-links > a:focus-visible,
+.site-header .nav-dropdown > summary:focus-visible,
+.site-header .nav-menu a:focus-visible {
+  outline: 2px solid #60A5FA;
+  outline-offset: 3px;
+}
+
+.site-header .nav-dropdown[open] > summary span {
+  transform: rotate(180deg);
+}
+
+.site-header .nav-dropdown > summary span {
+  transition: transform 0.2s ease;
+}
+
+.site-header .nav-menu {
+  position: absolute;
+  z-index: 1000;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 245px;
+  max-width: min(300px, calc(100vw - 32px));
+  padding: 8px;
+  background: #0B1220;
+  border: 1px solid #263244;
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+}
+
+.site-header .nav-menu a {
+  display: block;
+  padding: 11px 12px;
+  border-radius: 8px;
+  color: #CBD5E1;
+  font-size: 14px;
+  line-height: 1.5;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.site-header .nav-menu a:hover {
+  background: #172033;
+  color: #93C5FD;
+}
+
+/* Prevent dropdowns near the right edge going off-screen */
+.site-header .nav-dropdown:last-of-type .nav-menu {
+  right: 0;
+  left: auto;
+}
+
+/* Tablet and mobile */
+@media (max-width: 700px) {
+  .site-header .nav-links {
+    justify-content: flex-start;
+    gap: 6px;
+  }
+
+  .site-header .nav-links > a,
+  .site-header .nav-dropdown > summary {
+    min-height: 44px;
+    padding: 9px 10px;
+    font-size: 13px;
+  }
+
+  .site-header .nav-menu {
+    position: static;
+    min-width: 0;
+    max-width: 100%;
+    margin-top: 6px;
+    box-shadow: none;
+  }
+
+  .site-header .nav-dropdown {
+    max-width: 100%;
+  }
+}
+
+/* ===== END GROUPED HEADER NAVIGATION ===== */
   </style>
 </head>
 
@@ -2033,21 +2161,32 @@
         </span>
       </a>
 
-      <nav class="nav-links" aria-label="Main navigation">
-        <a href="#resources">Resources</a>
-        <a href="#daily-challenge">Daily Challenge</a>
-        <a href="#quiz">Interview Quiz</a>
-        <a href="#bug-lab">Find the Bug</a>
-        <a href="#architecture-library">Architecture Library</a>
-        <a href="#system-design">System Design Simulator</a>
-        <a href="#practice-playground">SQL &amp; PySpark Playground</a>
-        <a href="#roadmap">Roadmap</a>
-        <a href="#projects">Projects</a>
-        <a href="#interviews">Interview Prep</a>
-        <a href="#about" class="nav-cta">About</a>
-      </nav>
-    </div>
-  </header>
+      
+<a class="nav-home" href="#top">Home</a>
+
+<details class="nav-dropdown">
+  <summary>Learn <span aria-hidden="true">▾</span></summary>
+  <div class="nav-menu">
+    <a href="#resources">Resources</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#architecture-library">Architecture Library</a>
+  </div>
+</details>
+
+<details class="nav-dropdown">
+  <summary>Practice <span aria-hidden="true">▾</span></summary>
+  <div class="nav-menu">
+    <a href="#daily-challenge">Daily Challenge</a>
+    <a href="#quiz">Interview Quiz</a>
+    <a href="#bug-lab">Find the Bug</a>
+    <a href="#system-design">System Design Simulator</a>
+    <a href="#practice-playground">SQL &amp; PySpark Playground</a>
+  </div>
+</details>
+
+<a href="#projects">Projects</a>
+<a href="#interviews">Interview Prep</a>
+<a href="#about">About</a>
 
   <main>
     <section class="hero" id="home">
